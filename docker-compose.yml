@@ -6,19 +6,22 @@ services:
       - "5001:5001"
     volumes:
       - .:/app
-      - ./sboms:/app/sboms  # Ensure this directory is writable
-      - ./tmp:/app/tmp      # Ensure this directory is writable
+      - ./sboms:/app/sboms
+      - ./tmp:/app/tmp
     depends_on:
       - mongo
     environment:
       - MONGO_URI=mongodb://mongo:27017/
+      - API_SERVER_URL=http://dtrack-apiserver:8080  # Add this line to reference the API
+    env_file:
+      - .env
 
   mongo:
     image: mongo:latest
     ports:
       - "27017:27017"
     volumes:
-      - mongo-data:/data/db  # Persistent data for MongoDB
+      - mongo-data:/data/db
 
 volumes:
   mongo-data:
