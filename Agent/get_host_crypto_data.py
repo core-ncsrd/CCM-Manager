@@ -357,7 +357,33 @@ def populate_json():
     with open(output_file, "w") as json_file:
         json.dump(data, json_file, indent=2)
 
+"""
+# To be checked and enabled at a later time
+def send_to_cbom_api(output_file, api_url):
+    headers = {'Content-Type': 'application/json'}
+    try:
+        response = requests.post(api_url, headers=headers, json=output_file)
+        response.raise_for_status()
+        return response.status_code, response.json()
+    except requests.exceptions.HTTPError as http_err:
+        return {"error": "HTTP error occurred", "status_code": response.status_code, "details": str(http_err)}
+    except requests.exceptions.RequestException as req_err:
+        return {"error": "Error occurred during API request", "details": str(req_err)}
+    except Exception as e:
+        return {"error": "Unexpected error occurred while sending to API", "details": str(e)}
+"""
+
 # Execute script
 if __name__ == "__main__":
     populate_json()
     print(f"Data appended to {output_file}")
+    
+"""
+    api_url = "http://localhost:8181/generate_cbom"
+    response = send_to_cbom_api(output_file, api_url)
+    if isinstance(response, dict) and "error" in response:
+        print("Error sending CBOM to API:", response)
+    else:
+        print("API response:", response)
+"""
+
