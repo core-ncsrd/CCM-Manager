@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 import json
 import uuid
 from algos_details import details
-from algos_details import resources
+#from algos_details import resources
 import re
 
 
@@ -61,24 +61,24 @@ def generate_sbom():
 
         # Perform a strictly scoped search in the provided folder path
         for root, dirs, files in os.walk(folder_path):
-            #logging.debug(f"Checking directory: {root}")
+            logging.debug(f"Checking directory: {root}")
             # Check for Java pom.xml
             if 'pom.xml' in files:
                 requirements_file = os.path.join(root, 'pom.xml')
                 language = 'java'
-                #logging.debug(f"Found Java pom.xml file at: {requirements_file}")
+                logging.debug(f"Found Java pom.xml file at: {requirements_file}")
                 break
             # Check for Python requirements.txt
             elif 'requirements.txt' in files:
                 requirements_file = os.path.join(root, 'requirements.txt')
                 language = 'python'
-                #logging.debug(f"Found Python requirements.txt file at: {requirements_file}")
+                logging.debug(f"Found Python requirements.txt file at: {requirements_file}")
                 break
             # Check for Node.js package.json
             elif 'package.json' in files:
                 requirements_file = os.path.join(root, 'package.json')
                 language = 'nodejs'
-                #logging.debug(f"Found Node.js package.json file at: {requirements_file}")
+                logging.debug(f"Found Node.js package.json file at: {requirements_file}")
                 break
 
         # Return an error if no supported dependency file is found
@@ -106,7 +106,7 @@ def generate_sbom():
             )
 
             if result.returncode != 0:
-                #logging.error(f"Error generating SBOM with cdxgen: {result.stderr}")
+                logging.error(f"Error generating SBOM with cdxgen: {result.stderr}")
                 return jsonify({
                     "error": "Failed to generate SBOM",
                     "details": result.stderr,
@@ -118,7 +118,7 @@ def generate_sbom():
             return jsonify({"error": "Failed to generate SBOM"}), 500
 
         # Run the project creation script and pass the SBOM file path
-        #logging.debug(f"SBOM generated at: {sbom_filepath}")
+        logging.debug(f"SBOM generated at: {sbom_filepath}")
         result = subprocess.run(
             ['./create_project.sh', sbom_filepath],
             capture_output=True,
@@ -127,9 +127,9 @@ def generate_sbom():
         )
 
         # Additional logging to verify subprocess execution results
-        # logging.debug(f"Create project script return code: {result.returncode}")
-        # logging.debug(f"Create project script output: {result.stdout}")
-        # logging.error(f"Create project script stderr: {result.stderr}")
+        logging.debug(f"Create project script return code: {result.returncode}")
+        logging.debug(f"Create project script output: {result.stdout}")
+        logging.error(f"Create project script stderr: {result.stderr}")
 
         if result.returncode != 0:
             return jsonify({
@@ -156,7 +156,7 @@ def generate_sbom():
             return jsonify({"error": "Failed to retrieve vulnerabilities"}), 500
 
     except Exception as e:
-        #logging.error(f"An error occurred: {e}")
+        logging.error(f"An error occurred: {e}")
         return jsonify({"error": "Internal server error"}), 500
 
 @app.route('/show_vulnerabilities', methods=['GET'])
@@ -171,7 +171,7 @@ def get_vulnerabilities():
             return jsonify({"message": "No vulnerabilities found"}), 404
 
     except Exception as e:
-        #logging.error(f"An error occurred while fetching vulnerabilities: {e}")
+        logging.error(f"An error occurred while fetching vulnerabilities: {e}")
         return jsonify({"error": "Internal server error"}), 500
     
 
@@ -190,7 +190,7 @@ def generate_cbom():
                 return jsonify({"error": "Failed to decode JSON. Please ensure valid JSON is provided."}), 400
         else:
             return jsonify({"error": "No valid JSON or file provided."}), 400
-
+        
         # Handle the cipher info
         ciphers = data.get("ciphers", {})
         certificate_info = data.get("certificate", {})
@@ -204,29 +204,23 @@ def generate_cbom():
             if not cipher_name:
                 return jsonify({"error": "Cipher name is required"}), 400
 
-            # Fetch details for this cipher if available
-            algorithm_primitive = "unknown"
-            functions = "unknown"
-            nist_security_category = "0"
-            certificate_level = "none"
-            classic_security_level = "unknown"  # Adjust as needed if you have a classic security level
-
             name = cipher_name.split("-")[0]
-
-            integers = re.findall(r'\d+', name)
-            integers = [int(i) for i in integers]
-            
-            result = re.sub(r'\d+', '', name)
-            name = result
-            if integers:
-                name = result+"-"+str(integers[0])
+            if name == "RC4":
+                name = "RC4"
+            else:
+                integers = re.findall(r'\d+', name)
+                integers = [int(i) for i in integers]
+                
+                result = re.sub(r'\d+', '', name)
+                name = result
+                if integers:
+                    name = result+"-"+str(integers[0])
 
             if details.get(name):
-
-                algorithm_primitive = details.get(name).get("Primitive")
-                functions = details.get(name).get("Functions")
-                nist_security_category = details.get(name).get("NIST_Security_Category")
-                certificate_level = details.get(name).get("certification level")
+                algorithm_primitive = details.get(name).get("Primitive", "Unknown")
+                functions = details.get(name).get("Functions", "Unknown")
+                nist_security_category = details.get(name).get("NIST_Security_Category", "0")
+                certificate_level = details.get(name).get("certification level", "Unknown")
                 classic_security_level = integers[0]
 
             algorithm_components.append({
@@ -250,14 +244,32 @@ def generate_cbom():
         # Certificate SBOM generation
         if certificate_info:
             issuer_name = certificate_info.get("issuerName", "Unknown")
+            subject_name_raw = certificate_info.get("subjectName", "Unknown")
             subject_name = certificate_info.get("subjectName", "Unknown")
             not_valid_before = certificate_info.get("notValidBefore", "Unknown")
             not_valid_after = certificate_info.get("notValidAfter", "Unknown")
             signature_algorithm = certificate_info.get("signatureAlgorithm", "Unknown")
             public_key_algorithm = certificate_info.get("publicKeyAlgorithm", "Unknown")
             rsa_public_key = certificate_info.get("rsaPublicKey", "Unknown")
-            
-            cipher_ref = ciphers.get("AES256-GCM-SHA384", {}).get("oid", "Unknown")
+            not_valid_before_raw = certificate_info.get("notValidBefore", "Unknown")
+            not_valid_after_raw = certificate_info.get("notValidAfter", "Unknown")
+            cipher_suite = certificate_info.get("cipherSuite", "Unknown")
+            cipher_ref = ciphers.get(cipher_suite, {}).get("oid", "Unknown")
+
+            match = re.search(r"CN\s*=\s*([^,]+)", subject_name_raw)
+            subject_name = match.group(1) if match else "Unknown"
+
+            def convert_to_iso8601(date_str):
+                try:
+                    # Parse the input date string (e.g., "Nov  6 00:00:00 2023 GMT")
+                    parsed_date = datetime.strptime(date_str, "%b %d %H:%M:%S %Y %Z")
+                    # Format to ISO 8601 (e.g., "2016-11-21T08:00:00Z")
+                    return parsed_date.strftime("%Y-%m-%dT%H:%M:%SZ")
+                except ValueError:
+                    return "Unknown"
+
+            not_valid_before = convert_to_iso8601(not_valid_before_raw)
+            not_valid_after = convert_to_iso8601(not_valid_after_raw)
 
             certificate_components.append({
                 "name": subject_name,
@@ -324,8 +336,8 @@ def generate_cbom():
         with open(certificate_sbom_filepath, 'w+') as cert_file:
             json.dump(certificate_sbom, cert_file, indent=4)
 
-        #logging.info(f"Algorithm SBOM saved at {algorithm_sbom_filepath}")
-        #logging.info(f"Certificate SBOM saved at {certificate_sbom_filepath}")
+        logging.info(f"Algorithm SBOM saved at {algorithm_sbom_filepath}")
+        logging.info(f"Certificate SBOM saved at {certificate_sbom_filepath}")
 
         return jsonify({
             "message": "SBOMs generated successfully",
@@ -336,7 +348,6 @@ def generate_cbom():
     except Exception as e:
         logging.error(f"An error occurred: {str(e)}")
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
