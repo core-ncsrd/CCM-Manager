@@ -18,7 +18,6 @@ def get_system_oids():
 #    algorithms = json.loads(output)
 #    algorithms_with_security = append_security_levels_to_algorithms(algorithms, security_levels)
 
-
     # Split the output by lines and process each line
     for line in output.splitlines():
         if line.strip():  # Ignore empty lines

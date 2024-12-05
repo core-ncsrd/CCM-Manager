@@ -1,4 +1,6 @@
 import json
+import os
+import time
 # import subprocess
 # import uuid
 # import re
@@ -8,7 +10,7 @@ from enabled_algorithms import get_disabled_algorithms, get_enabled_algorithms
 from ssh_info import get_ssh_crypto_info
 from certificates import get_certificate_info
 from oids import get_system_oids
-from ssl_tls_cipher_info import get_tls_cipher_info
+from ssl_tls_cipher_info import get_tls_cipher_info, get_nmap_tls_info
 #from kernels import get_kernel_info ## NOT YET
 #import requests
 
@@ -44,7 +46,7 @@ def populate_json():
     # Filter out the disabled algorithms
     algos = get_enabled_algorithms()
     # Debugging if needed
-#    print("enabled Algos: ", algorithms)
+    #print("enabled Algos: ", algos)
 
     # Load the OID mappings
     with open("oid_mappings.json", "r") as json_file:
@@ -72,7 +74,13 @@ def populate_json():
         if cipher_name in security_levels:
             cipher["classicSecurityLevel"] = security_levels[cipher_name]["classicSecurityLevel"]
 
-
+    # Get nmap TLS information of the host
+    nmap_tls_dets = get_nmap_tls_info()
+    if nmap_tls_dets:
+        for version, ciphers in nmap_tls_dets.items():
+            print(f"\n{version}:")
+            for cipher, details in ciphers.items():
+                print(f"  {cipher}: {details}")
 
     # Get certificate information by calling on the function get_certificate_info() 
     certificate_info = get_certificate_info()
@@ -81,8 +89,9 @@ def populate_json():
     #kernels = get_kernel_info() ## TO BE IMPLEMENTED LATER
 
     data = {
-        "algorithms": algos,
+        "oid_refs": algos,
         "ciphers": ciphers,
+        "nmap_tls_info": nmap_tls_dets,
         "certificate": certificate_info,
         "ssh_crypto_info": ssh_crypto_info,
 #        "kernel_crypto_info": kernels ## LATER
@@ -92,9 +101,44 @@ def populate_json():
     with open(output_file, "w") as json_file:
         json.dump(data, json_file, indent=2)
 
+def send_json_to_api(file_path, api_url):
+    
+    if not os.path.exists(file_path):
+        print(f"Error: File {file_path} does not exist.")
+        return None
+
+    # Read the JSON file content
+    with open(file_path, 'r') as json_file:
+        json_data = json_file.read()
+
+    try:
+        headers = {"Content-Type": "application/json"}
+        response = requests.post(api_url, data=json_data, headers=headers)
+        response.raise_for_status()  # Raise an HTTPError for bad responses (4xx, 5xx)
+        print(f"File {file_path} successfully sent to {api_url}. Response: {response.text}")
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Error sending file {file_path} to {api_url}: {e}")
+        return None
+
 # Execute script
 if __name__ == "__main__":
+    start_time = time.time()
     populate_json()
     print(f"Data appended to {output_file}")
 
     print(f"Sending {output_file} to CCM Manager for further processing...")
+
+    file_path = "{output_file}"
+    api_url = "http://10.160.1.189:5001/generate_cbom"
+    send_json_to_api(file_path, api_url)
+    if isinstance(response, dict) and "error" in response:
+        print("Error sending {output_file} to API:", response)
+    else:
+        print("{output_file} sent to CCM Manager. API response:", response)
+
+    end_time = time.time()
+    # Calculate elapsed time in seconds
+    elapsed_time = end_time - start_time
+    minutes, seconds = divmod(int(elapsed_time), 60)
+    print(f"*** Total time elapsed: {minutes} minutes {seconds} seconds ***")

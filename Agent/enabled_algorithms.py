@@ -3,62 +3,45 @@ import re
 
 #Helper function to get all algorithms within the system
 def get_all_algorithms():
-    #Gathering signature algorithms to be inserted into a list
-    command = ["openssl", "list", "-signature-algorithms"]
-    try:
-        output = subprocess.check_output(command, text=True)
-    except subprocess.CalledProcessError as e:
-        print(f"Error executing command: {e}")
-        return []
+    #Gathering signature and cipher algorithms to be inserted into a list
+    # Define commands to fetch algorithms
+    commands = [
+        ["openssl", "list", "-signature-algorithms"],
+        ["openssl", "list", "-cipher-algorithms"]
+    ]
 
     all_algos = {}
 
-    for line in output.splitlines():
-        line = line.strip()
-        if not line:
-            continue
-
-        if line.startswith("{"):
-            main_part = line.split('@')[0].strip("{").strip("}").strip()
-            elements = [item.strip() for item in main_part.split(',')]
-
-            oids = [elem for elem in elements if re.match(r"^\d+(\.\d+)+$", elem)]
-            names = [elem for elem in elements if not re.match(r"^\d+(\.\d+)+$", elem)]
-                   #[elements.pop(0).strip() for _ in range(2)] if len(elements) > 2 else [elements.pop(0).strip()]
-            while oids and names:
-                oid = oids.pop(0)
-                algo_name = names.pop(0).strip(" }")
-                all_algos[algo_name.strip(" }")] = {"algo_oid": oid}
-            for algo_name in names:
-                all_algos[algo_name.strip(" }")] = {"algo_oid": "N/A"}
-        else:
-            algo_name = line.split('@')[0].strip()
-            all_algos[algo_name.strip(" }")] = {"algo_oid": "N/A"}
-
-    #Gathering cipher algorithms to be appended to the list
-    command = ["openssl", "list", "-cipher-algorithms"]
-    output = subprocess.check_output(command, text=True)
+    # Process each command
+    for command in commands:
+        try:
+            output = subprocess.check_output(command, text=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Error executing command: {e}")
+            return []
 
     for line in output.splitlines():
         line = line.strip()
-        if not line:
+        if not line or not line.startswith("{"):
             continue
 
-        if line.startswith("{"):
-            main_part = line.split('@ default')[0].strip()
-            elements = main_part.strip('{}').split(',')
 
-            oids = [elements.pop(0).strip()
-            for _ in range(2)] if len(elements) > 2 else[elements.pop(0).strip()]
-            while elements:
-                algo_name = elements.pop(0).strip()
-                algo_aliases = elements.pop(0).strip() if elements else "N/A"
-                all_algos[algo_name.strip(" }")] = {"algo_oid": oid}
-        else:
-            algo_name = line.split('@')[0].strip()
-            all_algos[algo_name.strip(" }")] = {"algo_oid": "N/A"}
+        main_part = line.split('{')[1].split('}')[0]
+        elements = [item.strip() for item in main_part.split(',')]
+
+        # Separate OIDs and algorithm names
+        oids = [elem for elem in elements if re.match(r"^\d+(\.\d+)+$", elem)]
+        names = [elem for elem in elements if not re.match(r"^\d+(\.\d+)+$", elem)]
+               #[elements.pop(0).strip() for _ in range(2)] if len(elements) > 2 else [elements.pop(0).strip()]
+
+        # Associate OIDs with algorithm names
+        for index, algo_name in enumerate(names):
+            oid = oids[index] if index < len(oids) else "N/A"
+            all_algos[algo_name] = {"algo_oid": oid}
+
+
     #Debugging output if needed
-    #print("Algos gathered: ", all_algos)
+    # print("Algos gathered: ", all_algos)
 
     return all_algos
 
@@ -94,10 +77,10 @@ def filter_enabled_algorithms(algorithms, disabled_algorithms):
             enabled_algorithms[algo_name.strip(" }")] = algo_data
 
     #Debugging output if needed
-#    print("Enabled algos gathered: ", enabled_algorithms)
-
+    # print("Enabled algos gathered: ", enabled_algorithms)
 
     return enabled_algorithms
+
 
 # Main function to get enabled algorithms
 def get_enabled_algorithms():
@@ -108,7 +91,6 @@ def get_enabled_algorithms():
     enabled_algorithms = filter_enabled_algorithms(all_algorithms, disabled_algorithms)
 
     #Debugging output if needed
-#    print("Enabled algos gathered: ", enabled_algorithms)
-
+    # print("Enabled algos gathered: ", enabled_algorithms)
 
     return enabled_algorithms

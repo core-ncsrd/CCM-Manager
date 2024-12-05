@@ -1,13 +1,62 @@
 import subprocess
 import re
+import os
+
+# Helper function to get the certificate of the host being validated
+def find_certificate():
+# List of common directories to search for certificates
+    cert_directories = [
+        "/etc/ssl/certs",
+        "/usr/share/ca-certificates",
+        "/var/lib/ca-certificates",
+        "/etc/pki/tls/certs",
+        "/etc/ssl",
+        "/etc/pki/ca-trust/extracted",
+#        os.path.expanduser("~")  # User's home directory
+    ]
+
+    # Extensions of certificate files to search for
+    cert_extensions = ["*.crt", "*.pem", "*.cer"]
+
+    user_home = os.path.expanduser("~")
+
+    for cert_dir in cert_directories:
+        if os.path.exists(cert_dir) and os.path.isdir(cert_dir):
+            for root, dirs, files in os.walk(cert_dir):
+                # Skip the user's home directory
+                if root.startswith(user_home):
+                    continue
+
+                for file in files:
+                    if file.endswith((".crt", ".cer", ".pem")):  # Check for common certificate file extensions
+                        cert_path = os.path.join(root, file)
+                        print(f"Found certificate: {cert_path}")
+                        return cert_path
+
+    print("No certificate found in common directories.")
+    return None
+
 
 # Helper function to get certificate information from openssl x509 command
 def get_certificate_info():
     # Ask the user for the path to the certificate file
     cert_path = input("Please enter the path to the certificate file: ")
 
+    # Dynamic search of usual certificate locations in the host system
+#    cert_path = find_certificate()
+
+    if not cert_path:
+        print("Certificate not found. Exiting.")
+        return {}
+
+    print(f"Using certificate at: {cert_path}")
+
     command = ["openssl", "x509", "-noout", "-text", "-in", cert_path]
-    output = subprocess.check_output( command, text=True)
+    try:
+       output = subprocess.check_output( command, text=True)
+    except subprocess.CallProcessError as e:
+       print(f"Error executing command: {e}")
+       return {}
 
     certificate_data = {}
     # Define regex for each piece of data to extract
