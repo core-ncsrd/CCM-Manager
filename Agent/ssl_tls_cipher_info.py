@@ -61,59 +61,44 @@ def get_nmap_tls_info():
 
     nmap_tls_ssl_info = {"nmap_tls_ssl_enum_ciphers_info": {}}
 
-    current_port = None
-    current_tls_version = None
+    curr_port = None
+    curr_tls_version = None
+    in_tls_section = False
 
     for line in output_nmap.splitlines():
         line = line.strip()
-
+        
         # Detect port and protocol
         port_match = re.match(r"(\d+)/(\w+)\s+(\w+)", line)
         if port_match:
-            current_port = int(port_match.group(1))
+            curr_port = int(port_match.group(1))
             net_proto = port_match.group(2)
             status = port_match.group(3)
 
             # Initialize port details
-            nmap_tls_ssl_info["nmap_tls_ssl_enum_ciphers_info"][current_port] = {
+            nmap_tls_ssl_info["nmap_tls_ssl_enum_ciphers_info"][curr_port] = {
                 "net_proto": net_proto,
                 "status": status,
-                "tls_versions": {}
+                "tls_vers_enabled": {}
             }
+            # Reset for new port
+            curr_tls_version = None
+            in_tls_section = False
             continue
 
-        # Detect TLS version
-        if line.startswith("TLS"):
-            current_tls_version = line.split(":")[0].strip()
-            nmap_tls_ssl_info["nmap_tls_ssl_enum_ciphers_info"][current_port]["tls_versions"][current_tls_version] = {
-                "ciphers": {}
-            }
+        # Detect TLS version (adjusted regex to handle any spaces)
+        tls_match = re.match(r"^\|?\s*(TLSv[0-9\.]+):", line)
+        if tls_match:
+            curr_tls_version = tls_match.group(1)
+            in_tls_section = True
+            nmap_tls_ssl_info["nmap_tls_ssl_enum_ciphers_info"][curr_port]["tls_vers_enabled"][curr_tls_version] = []
             continue
 
-        # Detect cipher details
-        cipher_match = re.match(r"(TLS[_\w]+)\s+\((\w+)\s+(\d+)\)\s+-\s+(\w)", line)
-        if cipher_match and current_tls_version:
-            cipher_name = cipher_match.group(1)
-            moduli = cipher_match.group(2)
-            moduli_size = int(cipher_match.group(3))
-            strength = cipher_match.group(4)
-
-            # Add cipher details
-            nmap_tls_ssl_info["nmap_tls_ssl_enum_ciphers_info"][current_port]["tls_versions"][current_tls_version][
-                "ciphers"][cipher_name] = {
-                "moduli": moduli,
-                "moduli_size": moduli_size,
-                "strength": strength
-            }
-
-    # Debug output
-    # print("nmap_tls_ciphers", nmap_tls_info)
+        # Detect cipher details if in a TLS section (adjusted regex for capturing cipher lines)
+        if in_tls_section and curr_tls_version:
+            cipher_suite_match = re.match(r"^\|\s*(\S.*)", line)  # Match ciphers that start with '|' or spaces
+            if cipher_suite_match:
+                cipher_details = cipher_suite_match.group(1)
+                nmap_tls_ssl_info["nmap_tls_ssl_enum_ciphers_info"][curr_port]["tls_vers_enabled"][curr_tls_version].append(cipher_details)
 
     return nmap_tls_ssl_info
-
-
-if __name__ == "__main__":
-   # Get NMAP TLS/SSL cipher information
-   nmap_tls_info = get_nmap_tls_info()
-   print("Nmap TLS Cipher Info:")
-   print(json.dumps(nmap_tls_info, indent=2))

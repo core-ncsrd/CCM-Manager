@@ -74,14 +74,9 @@ def populate_json():
         if cipher_name in security_levels:
             cipher["classicSecurityLevel"] = security_levels[cipher_name]["classicSecurityLevel"]
 
-    # Get nmap TLS information of the host
+    # # Get nmap TLS information of the host
     nmap_tls_dets = get_nmap_tls_info()
-    if nmap_tls_dets:
-        for version, ciphers in nmap_tls_dets.items():
-            print(f"\n{version}:")
-            for cipher, details in ciphers.items():
-                print(f"  {cipher}: {details}")
-
+    
     # Get certificate information by calling on the function get_certificate_info() 
     certificate_info = get_certificate_info()
 
@@ -90,7 +85,7 @@ def populate_json():
 
     data = {
         "oid_refs": algos,
-        "ciphers": ciphers,
+        "ciphers": {"tls" : ciphers},
         "nmap_tls_info": nmap_tls_dets,
         "certificate": certificate_info,
         "ssh_crypto_info": ssh_crypto_info,
@@ -128,14 +123,17 @@ if __name__ == "__main__":
     print(f"Data appended to {output_file}")
 
     print(f"Sending {output_file} to CCM Manager for further processing...")
+    
+    file_path = output_file  # Ensure the variable is used correctly
+    api_url = "http://10.160.1.189:5001/receive_output"
+    response = send_json_to_api(file_path, api_url)  # Capture the response here
 
-    file_path = "{output_file}"
-    api_url = "http://10.160.1.189:5001/generate_cbom"
-    send_json_to_api(file_path, api_url)
-    if isinstance(response, dict) and "error" in response:
-        print("Error sending {output_file} to API:", response)
+    if response is None:
+        print(f"Error sending {output_file} to API.")
+    elif isinstance(response, dict) and "error" in response:
+        print(f"Error sending {output_file} to API: {response}")
     else:
-        print("{output_file} sent to CCM Manager. API response:", response)
+        print(f"{output_file} sent to CCM Manager. API response:", response)
 
     end_time = time.time()
     # Calculate elapsed time in seconds
