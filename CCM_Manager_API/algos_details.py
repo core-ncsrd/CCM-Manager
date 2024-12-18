@@ -1,954 +1,566 @@
-import json
-
-
 details = {
-    "RSA 2048": {
-        "Primitive": "PKE",
+  "AES": {
+    "cbc": {
+      "128": {
+        "Classic Security Level": "128",
         "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt",
-            "sign",
-            "verify"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "fips140-2-l1"
-    },
-    "RSA 3072": {
-        "Primitive": "PKE",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt",
-            "sign",
-            "verify"
+          "keygen",
+          "encrypt",
+          "decrypt"
         ],
         "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l1"
-    },
-    "RSA 4096": {
-        "Primitive": "PKE",
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      },
+      "192": {
+        "Classic Security Level": "192",
         "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt",
-            "sign",
-            "verify"
+          "keygen",
+          "encrypt",
+          "decrypt"
         ],
         "NIST_Security_Category": 3,
-        "certification level": "fips140-2-l1"
-    },
-    "ECDSA P-192": {
-        "Primitive": "Signature",
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      },
+      "256": {
+        "Classic Security Level": "256",
         "Functions": [
-            "keygen",
-            "sign",
-            "verify"
+          "keygen",
+          "encrypt",
+          "decrypt"
         ],
-        "NIST_Security_Category": 1,
-        "certification level": "fips140-2-l1"
+        "NIST_Security_Category": 4,
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      }
     },
-    "ECDSA P-224": {
-        "Primitive": "Signature",
+    "gcm": {
+      "128": {
+        "Classic Security Level": "128",
         "Functions": [
-            "keygen",
-            "sign",
-            "verify"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "fips140-2-l1"
-    },
-    "ECDSA P-256": {
-        "Primitive": "Signature",
-        "Functions": [
-            "keygen",
-            "sign",
-            "verify"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l1"
-    },
-    "ECDSA P-384": {
-        "Primitive": "Signature",
-        "Functions": [
-            "keygen",
-            "sign",
-            "verify"
+          "keygen",
+          "encrypt",
+          "decrypt",
+          "authenticate"
         ],
         "NIST_Security_Category": 3,
-        "certification level": "fips140-2-l1"
-    },
-    "ECDSA P-521": {
-        "Primitive": "Signature",
+        "Primitive": "Authenticated Encryption",
+        "certification level": "fips140-2-l1",
+        "Mode": "GCM"
+      },
+      "256": {
+        "Classic Security Level": "256",
         "Functions": [
-            "keygen",
-            "sign",
-            "verify"
+          "keygen",
+          "encrypt",
+          "decrypt",
+          "authenticate"
         ],
         "NIST_Security_Category": 4,
-        "certification level": "fips140-2-l1"
-    },
-    "DSA (1024-bit)": {
-        "Primitive": "Signature",
-        "Functions": [
-            "keygen",
-            "sign",
-            "verify"
-        ],
-        "NIST_Security_Category": 0,
-        "certification level": "fips140-2-l1"
-    },
-    "DSA (2048-bit)": {
-        "Primitive": "Signature",
-        "Functions": [
-            "keygen",
-            "sign",
-            "verify"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l1"
-    },
-    "AES-128": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l1"
-    },
-    "AES-192": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 3,
-        "certification level": "fips140-2-l1"
-    },
-    "AES-256": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "fips140-2-l1"
-    },
-    "ChaCha20": {
-        "Primitive": "Stream-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "none"
-    },
-    "SHA-1": {
-        "Primitive": "Hash",
-        "Functions": [
-            "digest"
-        ],
-        "NIST_Security_Category": 0,
-        "certification level": "fips140-2-l1"
-    },
-    "SHA-256": {
-        "Primitive": "Hash",
-        "Functions": [
-            "digest"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l1"
-    },
-    "SHA-384": {
-        "Primitive": "Hash",
-        "Functions": [
-            "digest"
-        ],
-        "NIST_Security_Category": 3,
-        "certification level": "fips140-2-l1"
-    },
-    "SHA-512": {
-        "Primitive": "Hash",
-        "Functions": [
-            "digest"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "fips140-2-l1"
-    },
-    "SHA-512/256": {
-        "Primitive": "Hash",
-        "Functions": [
-            "digest"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "fips140-2-l1"
-    },
-    "SHA-3-256": {
-        "Primitive": "Hash",
-        "Functions": [
-            "digest"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l1"
-    },
-    "SHA-3-384": {
-        "Primitive": "Hash",
-        "Functions": [
-            "digest"
-        ],
-        "NIST_Security_Category": 3,
-        "certification level": "fips140-2-l1"
-    },
-    "SHA-3-512": {
-        "Primitive": "Hash",
-        "Functions": [
-            "digest"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "fips140-2-l1"
-    },
-    "RSA PKCS1 v1.5": {
-        "Primitive": "PKE",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt",
-            "sign",
-            "verify"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "fips140-2-l1"
-    },
-    "RSA OAEP": {
-        "Primitive": "PKE",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l1"
-    },
-    "ECDHE (P-256)": {
-        "Primitive": "Key-agree",
-        "Functions": [
-            "keygen",
-            "keyderive"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l1"
-    },
-    "ECDHE (P-384)": {
-        "Primitive": "Key-agree",
-        "Functions": [
-            "keygen",
-            "keyderive"
-        ],
-        "NIST_Security_Category": 3,
-        "certification level": "fips140-2-l1"
-    },
-    "ECDHE (P-521)": {
-        "Primitive": "Key-agree",
-        "Functions": [
-            "keygen",
-            "keyderive"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "fips140-2-l1"
-    },
-    "DH 2048-bit": {
-        "Primitive": "Key-agree",
-        "Functions": [
-            "keygen",
-            "keyderive"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l1"
-    },
-    "DH 3072-bit": {
-        "Primitive": "Key-agree",
-        "Functions": [
-            "keygen",
-            "keyderive"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l1"
-    },
-    "DH 4096-bit": {
-        "Primitive": "Key-agree",
-        "Functions": [
-            "keygen",
-            "keyderive"
-        ],
-        "NIST_Security_Category": 3,
-        "certification level": "fips140-2-l1"
-    },
-    "DH 8192-bit": {
-        "Primitive": "Key-agree",
-        "Functions": [
-            "keygen",
-            "keyderive"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "fips140-2-l1"
-    },
-    "X25519 (ECDH)": {
-        "Primitive": "Key-agree",
-        "Functions": [
-            "keygen",
-            "keyderive"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "none"
-    },
-    "X448 (ECDH)": {
-        "Primitive": "Key-agree",
-        "Functions": [
-            "keygen",
-            "keyderive"
-        ],
-        "NIST_Security_Category": 3,
-        "certification level": "none"
-    },
-    "TLS 1.0": {
-        "Primitive": "Combiner",
-        "Functions": [
-            "generate",
-            "encrypt",
-            "decrypt",
-            "tag"
-        ],
-        "NIST_Security_Category": 0,
-        "certification level": "none"
-    },
-    "TLS 1.1": {
-        "Primitive": "Combiner",
-        "Functions": [
-            "generate",
-            "encrypt",
-            "decrypt",
-            "tag"
-        ],
-        "NIST_Security_Category": 0,
-        "certification level": "none"
-    },
-    "TLS 1.2": {
-        "Primitive": "Combiner",
-        "Functions": [
-            "generate",
-            "encrypt",
-            "decrypt",
-            "tag"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l2"
-    },
-    "TLS 1.3": {
-        "Primitive": "Combiner",
-        "Functions": [
-            "generate",
-            "encrypt",
-            "decrypt",
-            "tag"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l2"
-    },
-    "Camellia-128": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "none"
-    },
-    "Camellia-192": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 3,
-        "certification level": "none"
-    },
-    "Camellia-256": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "none"
-    },
-    "IDEA": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "none"
-    },
-    "SEED": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "none"
-    },
-    "ARIA-128": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "none"
-    },
-    "ARIA-192": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 3,
-        "certification level": "none"
-    },
-    "ARIA-256": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "none"
-    },
-    "Threefish-256": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "none"
-    },
-    "Threefish-512": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 3,
-        "certification level": "none"
-    },
-    "Threefish-1024": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "none"
-    },
-    "Blowfish": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "none"
-    },
-    "Twofish": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "none"
-    },
-    "Serpent": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "none"
-    },
-    "RC4": {
-        "Primitive": "Stream-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 0,
-        "certification level": "none"
-    },
-    "RC5": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "none"
-    },
-    "RC6": {
-        "Primitive": "Block-cipher",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "none"
-    },
-    "SHAKE128": {
-        "Primitive": "XOF",
-        "Functions": [
-            "digest"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "fips140-2-l1"
-    },
-    "SHAKE256": {
-        "Primitive": "XOF",
-        "Functions": [
-            "digest"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l2"
-    },
-    "PBKDF2": {
-        "Primitive": "KDF",
-        "Functions": [
-            "keyderive"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "fips140-2-l1"
-    },
-    "HKDF": {
-        "Primitive": "KDF",
-        "Functions": [
-            "keyderive"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "fips140-2-l1"
-    },
-    "bcrypt": {
-        "Primitive": "KDF",
-        "Functions": [
-            "keyderive"
-        ],
-        "NIST_Security_Category": 1,
-        "certification level": "none"
-    },
-    "scrypt": {
-        "Primitive": "KDF",
-        "Functions": [
-            "keyderive"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "none"
-    },
-    "Argon2": {
-        "Primitive": "KDF",
-        "Functions": [
-            "keyderive"
-        ],
-        "NIST_Security_Category": 3,
-        "certification level": "none"
-    },
-    "AES-GCM": {
-        "Primitive": "AE",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt",
-            "tag"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l2"
-    },
-    "AES-CCM": {
-        "Primitive": "AE",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt",
-            "tag"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "fips140-2-l2"
-    },
-    "AES-EAX": {
-        "Primitive": "AE",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt",
-            "tag"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "none"
-    },
-    "AES-SIV": {
-        "Primitive": "AE",
-        "Functions": [
-            "keygen",
-            "encrypt",
-            "decrypt",
-            "tag"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "none"
-    },
-    "RSA-KEM": {
-        "Primitive": "KEM",
-        "Functions": [
-            "keygen",
-            "encapsulate",
-            "decapsulate"
-        ],
-        "NIST_Security_Category": 2,
-        "certification level": "none"
-    },
-    "FrodoKEM": {
-        "Primitive": "KEM",
-        "Functions": [
-            "keygen",
-            "encapsulate",
-            "decapsulate"
-        ],
-        "NIST_Security_Category": 3,
-        "certification level": "none"
-    },
-    "Kyber": {
-        "Primitive": "KEM",
-        "Functions": [
-            "keygen",
-            "encapsulate",
-            "decapsulate"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "fips140-3-l1"
-    },
-    "Dilithium": {
-        "Primitive": "Signature",
-        "Functions": [
-            "keygen",
-            "sign",
-            "verify"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "fips140-3-l1"
-    },
-    "Falcon": {
-        "Primitive": "Signature",
-        "Functions": [
-            "keygen",
-            "sign",
-            "verify"
-        ],
-        "NIST_Security_Category": 4,
-        "certification level": "fips140-3-l1"
-    },
-    "Sphincs+": {
-        "Primitive": "Signature",
-        "Functions": [
-            "keygen",
-            "sign",
-            "verify"
-        ],
-        "NIST_Security_Category": 5,
-        "certification level": "fips140-3-l1"
+        "Primitive": "Authenticated Encryption",
+        "certification level": "fips140-2-l1",
+        "Mode": "GCM"
+      }
     }
-}
-
-resources = [
-  {
-    "Algorithm": "RSA 2048",
-    "Classic Security Level": "112 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57, SP 800-131A"
   },
-  {
-    "Algorithm": "RSA 3072",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57, SP 800-131A"
+  "ARIA": {
+    "cbc": {
+      "128": {
+        "Classic Security Level": "128",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 2,
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      },
+      "192": {
+        "Classic Security Level": "192",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 3,
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      },
+      "256": {
+        "Classic Security Level": "256",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 4,
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      }
+    },
+    "other": {
+      "128": {
+        "Classic Security Level": "128",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 2,
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      },
+      "192": {
+        "Classic Security Level": "192",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 3,
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      },
+      "256": {
+        "Classic Security Level": "256",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 4,
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      }
+    }
   },
-  {
-    "Algorithm": "RSA 4096",
-    "Classic Security Level": "136 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, SP 800-131A"
+  "Argon2": {
+    "Classic Security Level": "unknow",
+    "Functions": [
+        "keyderive"
+    ],
+    "NIST_Security_Category": 3,
+    "Primitive": "KDF",
+    "certification level": "none",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "ECDSA P-192",
-    "Classic Security Level": "112 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "bcrypt": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "hashing"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Key Derivation Function",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "ECDSA P-224",
-    "Classic Security Level": "112 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "Blowfish": {
+    "cbc": {
+      "128": {
+        "Classic Security Level": "128",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 2,
+        "Primitive": "Block-cipher",
+        "certification level": "not certified",
+        "Mode": "CBC"
+      }
+    }
   },
-  {
-    "Algorithm": "ECDSA P-256",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "Camellia": {
+    "cbc": {
+      "128": {
+        "Classic Security Level": "128",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 2,
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      },
+      "192": {
+        "Classic Security Level": "192",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 3,
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      },
+      "256": {
+        "Classic Security Level": "256",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 4,
+        "Primitive": "Block-cipher",
+        "certification level": "fips140-2-l1",
+        "Mode": "CBC"
+      }
+    }
   },
-  {
-    "Algorithm": "ECDSA P-384",
-    "Classic Security Level": "192 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "ChaCha20": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "encrypt",
+      "decrypt"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Stream-cipher",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "ECDSA P-521",
-    "Classic Security Level": "256 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "DH": {
+    "Classic Security Level": "2048",
+    "Functions": [
+      "keygen",
+      "key agreement"
+    ],
+    "NIST_Security_Category": 4,
+    "Primitive": "Key agreement",
+    "certification level": "fips140-2-l1",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "DSA (1024-bit)",
-    "Classic Security Level": "112 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "DSA": {
+    "Classic Security Level": "2048",
+    "Functions": [
+      "keygen",
+      "sign",
+      "verify"
+    ],
+    "NIST_Security_Category": 4,
+    "Primitive": "Signature",
+    "certification level": "fips140-2-l1",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "DSA (2048-bit)",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "Dilithium": {
+    "Classic Security Level": "256",
+    "Functions": [
+      "keygen",
+      "sign",
+      "verify"
+    ],
+    "NIST_Security_Category": 5,
+    "Primitive": "Signature",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "AES-128",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57, SP 800-131A"
+  "ECDHE": {
+    "Classic Security Level": "224",
+    "Functions": [
+      "keygen",
+      "key agreement"
+    ],
+    "NIST_Security_Category": 3,
+    "Primitive": "Key agreement",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "AES-192",
-    "Classic Security Level": "192 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57, SP 800-131A"
+  "ECDSA": {
+    "Classic Security Level": "224",
+    "Functions": [
+      "keygen",
+      "sign",
+      "verify"
+    ],
+    "NIST_Security_Category": 3,
+    "Primitive": "Signature",
+    "certification level": "fips140-2-l1",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "AES-256",
-    "Classic Security Level": "256 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, SP 800-131A"
+  "Falcon": {
+    "Classic Security Level": "256",
+    "Functions": [
+      "keygen",
+      "sign",
+      "verify"
+    ],
+    "NIST_Security_Category": 5,
+    "Primitive": "Signature",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "ChaCha20",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57"
+  "FrodoKEM": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "key encapsulation"
+    ],
+    "NIST_Security_Category": 5,
+    "Primitive": "Key encapsulation",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "SHA-1",
-    "Classic Security Level": "80 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 180-4"
+  "HKDF": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "hashing"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Key Derivation Function",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "SHA-256",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 180-4"
+  "IDEA": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "encrypt",
+      "decrypt"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Block-cipher",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "SHA-384",
-    "Classic Security Level": "192 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 180-4"
+  "Kyber": {
+    "Classic Security Level": "256",
+    "Functions": [
+      "keygen",
+      "key encapsulation"
+    ],
+    "NIST_Security_Category": 5,
+    "Primitive": "Key encapsulation",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "SHA-512",
-    "Classic Security Level": "256 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 180-4"
+  "PBKDF2": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "hashing"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Key Derivation Function",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "SHA-512/256",
-    "Classic Security Level": "256 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 180-4"
+  "RC4": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "encrypt",
+      "decrypt"
+    ],
+    "NIST_Security_Category": 1,
+    "Primitive": "Stream-cipher",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "SHA-3-256",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-185"
+  "RC5": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "encrypt",
+      "decrypt"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Block-cipher",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "SHA-3-384",
-    "Classic Security Level": "192 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-185"
+  "RC6": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "encrypt",
+      "decrypt"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Block-cipher",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "SHA-3-512",
-    "Classic Security Level": "256 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-185"
+  "RSA": {
+    "Classic Security Level": "2048",
+    "Functions": [
+      "keygen",
+      "encrypt",
+      "decrypt",
+      "sign",
+      "verify"
+    ],
+    "NIST_Security_Category": 4,
+    "Primitive": "Public-key encryption",
+    "certification level": "fips140-2-l1",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "RSA PKCS1 v1.5",
-    "Classic Security Level": "112 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57, SP 800-131A"
+  "SEED": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "encrypt",
+      "decrypt"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Block-cipher",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "RSA OAEP",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57, SP 800-131A"
+  "SHA": {
+    "Classic Security Level": "256",
+    "Functions": [
+      "hashing"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Hash function",
+    "certification level": "fips140-2-l1",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "ECDHE (P-256)",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "SHAKE": {
+    "Classic Security Level": "256",
+    "Functions": [
+      "hashing"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Extended output function",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "ECDHE (P-384)",
-    "Classic Security Level": "192 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "Serpent": {
+    "cbc": {
+      "128": {
+        "Classic Security Level": "128",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 2,
+        "Primitive": "Block-cipher",
+        "certification level": "not certified",
+        "Mode": "CBC"
+      },
+      "192": {
+        "Classic Security Level": "192",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 3,
+        "Primitive": "Block-cipher",
+        "certification level": "not certified",
+        "Mode": "CBC"
+      },
+      "256": {
+        "Classic Security Level": "256",
+        "Functions": [
+          "keygen",
+          "encrypt",
+          "decrypt"
+        ],
+        "NIST_Security_Category": 4,
+        "Primitive": "Block-cipher",
+        "certification level": "not certified",
+        "Mode": "CBC"
+      }
+    }
   },
-  {
-    "Algorithm": "ECDHE (P-521)",
-    "Classic Security Level": "256 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "scrypt": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen", 
+      "hashing"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Key Derivation Function",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "DH 2048-bit",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "Sphincs+": {
+    "Classic Security Level": "256",
+    "Functions": [
+      "keygen",
+      "sign",
+      "verify"
+    ],
+    "NIST_Security_Category": 5,
+    "Primitive": "Signature",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "DH 3072-bit",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "TLS": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "key exchange",
+      "authentication"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Protocol",
+    "certification level": "fips140-2-l1",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "DH 4096-bit",
-    "Classic Security Level": "160 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "Threefish": {
+    "Classic Security Level": "256",
+    "Functions": [
+      "keygen",
+      "encrypt",
+      "decrypt"
+    ],
+    "NIST_Security_Category": 3,
+    "Primitive": "Block-cipher",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "DH 8192-bit",
-    "Classic Security Level": "192 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "Twofish": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "encrypt",
+      "decrypt"
+    ],
+    "NIST_Security_Category": 2,
+    "Primitive": "Block-cipher",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "X25519 (ECDH)",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
+  "X25519": {
+    "Classic Security Level": "128",
+    "Functions": [
+      "keygen",
+      "key agreement"
+    ],
+    "NIST_Security_Category": 3,
+    "Primitive": "Key agreement",
+    "certification level": "not certified",
+    "Mode": "none"
   },
-  {
-    "Algorithm": "X448 (ECDH)",
-    "Classic Security Level": "192 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 186-4"
-  },
-  {
-    "Algorithm": "TLS 1.0",
-    "Classic Security Level": "80 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 140-2"
-  },
-  {
-    "Algorithm": "TLS 1.1",
-    "Classic Security Level": "112 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 140-2"
-  },
-  {
-    "Algorithm": "TLS 1.2",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 140-2"
-  },
-  {
-    "Algorithm": "TLS 1.3",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57, FIPS 140-2"
-  },
-  {
-    "Algorithm": "Camellia-128",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57"
-  },
-  {
-    "Algorithm": "Camellia-192",
-    "Classic Security Level": "192 bits",
-    "NIST Quantum Security Level": "192 bits",
-    "NIST Documentation Reference": "SP 800-57"
-  },
-  {
-    "Algorithm": "Camellia-256",
-    "Classic Security Level": "256 bits",
-    "NIST Quantum Security Level": "256 bits",
-    "NIST Documentation Reference": "SP 800-57"
-  },
-  {
-    "Algorithm": "IDEA",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57"
-  },
-  {
-    "Algorithm": "SEED",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57"
-  },
-  {
-    "Algorithm": "ARIA",
-    "Classic Security Level": "128 bits",
-    "NIST Quantum Security Level": "128 bits",
-    "NIST Documentation Reference": "SP 800-57"
+  "X448": {
+    "Classic Security Level": "224",
+    "Functions": [
+      "keygen",
+      "key agreement"
+    ],
+    "NIST_Security_Category": 3,
+    "Primitive": "Key agreement",
+    "certification level": "not certified",
+    "Mode": "none"
   }
-]
-
+}
