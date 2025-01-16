@@ -1,4 +1,14 @@
+import logging
+import os
+from configure_logger import configure_logger, close_logger
+
+script_name = os.path.basename(__file__)
+parser_id = 4180
+logger = configure_logger(script_name, parser_id)
+# logger = logging.getLogger(__name__)
+
 def parse_ciphers_file(filepath):
+    logger.info("Parsing ciphers' file....")
     ciphers = {}  # Initialize an empty dictionary
     with open(filepath, "r") as file:
         for line in file.readlines()[1:]:  # Skipping header row
@@ -15,13 +25,14 @@ def parse_ciphers_file(filepath):
                 cipher_name = columns[1].strip()  # Use the SSL name as the key in the dictionary
                 ciphers[cipher_name] = cipher  # Store the cipher in the dictionary with the cipher name as key
     #print("Ciphers content:", ciphers)
+    logger.info("Finished parsing ciphers' file.")
     return ciphers
 
 def parse_security_levels(filepath):
 
     # Parse the algorithms-security-levels.txt file to create a mapping of
     # algorithms to their classic and NIST quantum security levels.
-
+    logger.info("Parsing algorithms' security levels file....")
     security_levels = []
 
     with open(filepath, 'r') as file:
@@ -56,4 +67,6 @@ def parse_security_levels(filepath):
                 }
 
 #    return {"algorithms": algorithms}
+    logger.info("Finished parsing algorithms security levels file.")
+    #close_logger(logger)
     return security_levels

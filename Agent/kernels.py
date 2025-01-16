@@ -1,8 +1,18 @@
 import subprocess
 import re
+import logging
+import os
+from configure_logger import configure_logger, close_logger
+
+script_name = os.path.basename(__file__)
+kernel_id = 1337
+logger = configure_logger(script_name, kernel_id)
+# logger = logging.getLogger(__name__)
 
 def get_kernel_info():
+
     # Run the command to get information from /proc/crypto
+    logger.info("Gathering Kernel crypto information.")
     command = "cat /proc/crypto"
     output = subprocess.check_output(command, shell=True, text=True)
 
@@ -45,4 +55,6 @@ def get_kernel_info():
 
     # Return the kernel information in JSON format
 #    return json.dumps(kernel_info, indent=2)
+    logger.info("Finished gathering Kernel crypto information.")
+    #close_logger(logger)
     return kernel_info

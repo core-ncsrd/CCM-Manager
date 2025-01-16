@@ -1,9 +1,18 @@
 import subprocess
 import re
+import os
 import json
+import logging
+from configure_logger import configure_logger, close_logger
+
+script_name = os.path.basename(__file__)
+oids_id = 6750
+logger = configure_logger(script_name, oids_id)
+# logger = logging.getLogger(__name__)
 
 # Helper function to execute the openssl list -objects command and save output to JSON
 def get_system_oids():
+    logger.info("Gathering system's OID records for mapping.")
     command = ["openssl", "list", "-objects"]
     output = subprocess.check_output(command, text=True)
 
@@ -52,5 +61,12 @@ def get_system_oids():
     # Write the oid mappings to oid_mappings.json
     with open(oid_mappings_file, "w") as json_file:
         json.dump(oid_mappings, json_file, indent=2)
-
+    
+    logger.info("Finished gathering system's OID information.")
+    #close_logger(logger)
     return oid_mappings
+
+#    finally:
+#        # Ensure logger is closed when the script finishes
+#        #close_logger(logger)
+

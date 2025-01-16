@@ -1,10 +1,19 @@
 import subprocess
 import re
+import os
+import logging
+from configure_logger import configure_logger, close_logger
+
+script_name = os.path.basename(__file__)
+enabled_id = 8446
+logger = configure_logger(script_name, enabled_id)
+# logger = logging.getLogger(__name__)
 
 #Helper function to get all algorithms within the system
 def get_all_algorithms():
     #Gathering signature and cipher algorithms to be inserted into a list
     # Define commands to fetch algorithms
+    logger.info("Gathering SSL Algorithms information...")
     commands = [
         ["openssl", "list", "-signature-algorithms"],
         ["openssl", "list", "-cipher-algorithms"]
@@ -17,7 +26,7 @@ def get_all_algorithms():
         try:
             output = subprocess.check_output(command, text=True)
         except subprocess.CalledProcessError as e:
-            print(f"Error executing command: {e}")
+            logger.error(f"Error executing command: {e}")
             return []
 
     for line in output.splitlines():
@@ -43,11 +52,13 @@ def get_all_algorithms():
     #Debugging output if needed
     # print("Algos gathered: ", all_algos)
 
+    logger.info("SSL Algorithms information gathered.")
     return all_algos
 
 
 # Helper function to get the list of disabled algorithms
 def get_disabled_algorithms():
+    logger.info("Gathering system's disabled algorithms, if any....")
     command = ["openssl", "list", "-disabled"]
     output = subprocess.check_output(command, text=True)
 
@@ -59,6 +70,7 @@ def get_disabled_algorithms():
             disabled_algorithms.add(line.strip())
     # Debugging output if needed
 #    print("Disabled:", disabled_algorithms)
+    logger.info("Gathered disabled algorithms.")
     return disabled_algorithms
 
 
@@ -69,6 +81,7 @@ def get_disabled_algorithms():
 
 # Function to filter out disabled algorithms
 def filter_enabled_algorithms(algorithms, disabled_algorithms):
+    logger.info("Filtering out disabled algorithms from collection.")
     enabled_algorithms = {}
 
     for algo_name, algo_data in algorithms.items():
@@ -84,6 +97,7 @@ def filter_enabled_algorithms(algorithms, disabled_algorithms):
 
 # Main function to get enabled algorithms
 def get_enabled_algorithms():
+    logger.info("Gathering enbaled algorithms.")
     all_algorithms = get_all_algorithms()
     disabled_algorithms = get_disabled_algorithms()
 
@@ -93,4 +107,5 @@ def get_enabled_algorithms():
     #Debugging output if needed
     # print("Enabled algos gathered: ", enabled_algorithms)
 
+#    #close_logger(logger)
     return enabled_algorithms
