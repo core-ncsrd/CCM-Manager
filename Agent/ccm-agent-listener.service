@@ -3,10 +3,8 @@ Description=CCM Agent Lister for API calls  Service
 After=network.target
 
 [Service]
-WorkingDirectory=/CCM/
-ExecStart=/bin/bash -c 'cd /CCM/ && /usr/bin/python3 ccm_trigger.py'
+ExecStart=/usr/bin/python3 /CCM/ccm_trigger.py
 Restart=always
-RestartSec=30
 User=root
 Group=root
 Environment=PYTHONUNBUFFERED=1
