@@ -13,7 +13,6 @@ from generate_tree import handle_dynamic_path, Counter, build_tree
 import networkx as nx
 import re
 
-
 app = Flask(__name__)
 
 # Configuration settings
@@ -214,11 +213,21 @@ def process_cipher(input_string):
 @app.route('/generate_cbom', methods=['POST'])
 def generate_cbom():
     try:
-        data = request.get_json()
+        if 'file' not in request.files:
+            return jsonify({"error": "No file part in the request."}), 400
+
+        file = request.files['file']
+        if file.filename == '':
+            return jsonify({"error": "No selected file."}), 400
+        
+        try:
+            data = json.load(file)
+        except json.JSONDecodeError:
+            return jsonify({"error": "Invalid JSON file."}), 400
         
         if not data:
             return jsonify({"error": "No data provided."}), 400
-
+        
         ciphers = data.get("ciphers", {}).get("tls", {})
         certificate_info = data.get("certificate", {})
 
@@ -256,6 +265,14 @@ def generate_cbom():
             if isinstance(details_data, dict):
                 build_tree(G, algorithm_node, details_data, counter)
 
+        existing_names = set()
+
+        def is_duplicate(name):
+            if name in existing_names:
+                return True
+            existing_names.add(name)
+            return False
+
         #visualizer = GraphVisualizer(G)
         algorithm_components = []
         certificate_components = []
@@ -270,6 +287,8 @@ def generate_cbom():
             # Use the encryption_algorithm as the name for the SBOM
             encryption_algorithm = cipher_data.get("encryption_algorithm", cipher_name)
             process_name = process_cipher(encryption_algorithm)
+            if is_duplicate(process_name):
+                continue
             normalized_cipher_name = process_name.lower()
             match = re.match(pattern, normalized_cipher_name)
             if not match:
@@ -303,7 +322,7 @@ def generate_cbom():
                 }
             # Handle Algorithms
             algorithm_components.append({
-                "name": encryption_algorithm,  # Use the encryption_algorithm here
+                "name": encryption_algorithm,
                 "type": "cryptographic-asset",
                 "cryptoProperties": {
                     "assetType": "algorithm",
@@ -358,7 +377,6 @@ def generate_cbom():
             not_valid_after = convert_to_iso8601(certificate_info.get("notValidAfter", "Unknown"))
             subject_name_raw = certificate_info.get("subjectName", "Unknown")
             subject_name = re.search(r"CN\s*=\s*([^,]+)", subject_name_raw).group(1) if subject_name_raw else "Unknown"
-
             certificate_components.append({
                 "name": subject_name,
                 "type": "cryptographic-asset",
@@ -425,25 +443,37 @@ def generate_cbom():
         return jsonify({"error": f"An unexpected error occurred: {str(e)}"}), 500
     
 @app.route('/receive_output', methods=['POST'])
-def receive_json():
+def receive_output():
     try:
         if 'file' in request.files:
             file = request.files['file']
-            if file.filename.endswith('.json'):
-                data = json.load(file)
-            else:
+            if not file.filename.endswith('.json'):
                 return jsonify({"error": "Invalid file format. Only .json files are allowed."}), 400
+            
+            temp_filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+            file.save(temp_filepath)
+
+            with app.test_request_context('/generate_cbom', method='POST', data={'file': open(temp_filepath, 'rb')}):
+                return generate_cbom()
+
         elif request.is_json:
             data = request.get_json()
             if not data:
-                return jsonify({"error": "Failed to decode JSON. Please provide valid JSON."}), 400
+                return jsonify({"error": "Invalid JSON data."}), 400
+            
+            temp_filename = "temp_data.json"
+            temp_filepath = os.path.join(app.config['UPLOAD_FOLDER'], temp_filename)
+            with open(temp_filepath, 'w') as temp_file:
+                json.dump(data, temp_file)
+
+            with app.test_request_context('/generate_cbom', method='POST', data={'file': open(temp_filepath, 'rb')}):
+                return generate_cbom()
+
         else:
-            return jsonify({"error": "No JSON data or file provided."}), 400
-    
-        return generate_cbom()
+            return jsonify({"error": "No valid input provided."}), 400
 
     except Exception as e:
-        logging.error(f"Error in receive_json: {str(e)}")
+        logging.error(f"Error in receive_output: {str(e)}")
         return jsonify({"error": f"An unexpected error occurred: {str(e)}"}), 500
 
 if __name__ == '__main__':
