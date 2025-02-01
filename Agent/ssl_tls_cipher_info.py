@@ -7,8 +7,8 @@ from configure_logger import configure_logger, close_logger
 
 script_name = os.path.basename(__file__)
 ssl_id = 6101
-logger = configure_logger(script_name, ssl_id)
-# logger = logging.getLogger(__name__)
+# logger = configure_logger(script_name, ssl_id)
+logger = logging.getLogger(__name__)
 
 def get_tls_cipher_info():
     # Use openssl ciphers -v to gather information about the ciphers

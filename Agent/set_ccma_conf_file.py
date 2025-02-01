@@ -2,6 +2,7 @@ import os
 import socket
 import uuid
 import hashlib
+import time
 from datetime import datetime
 import json
 import logging
@@ -15,12 +16,14 @@ logger.setLevel(logging.INFO)
 
 file_handler = logging.FileHandler(f'ccm-a-{hostname}-local-conf.log')
 
+#formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
 script_name = os.path.basename(__file__)  # Get the script name
-formatter = logging.Formatter(f'%(asctime)s - {script_name} - [%(process)d] - %(levelname)s: %(message)s')
+formatter = logging.Formatter(
+    f'%(asctime)s - {script_name} - [%(process)d] - %(levelname)s: %(message)s'
+)
 file_handler.setFormatter(formatter)
 
 logger.addHandler(file_handler)
-
 
 def get_or_create_ccma_id_file():
     logger.info("Running on %s", hostname)
@@ -70,6 +73,7 @@ def get_mac_address():
     except Exception as e:
         logger.error("Error getting the system's MAC address.")
         return "00:00:00:00:00:00"
+
 
 def log_ccm_data():
     hostname = socket.gethostname()

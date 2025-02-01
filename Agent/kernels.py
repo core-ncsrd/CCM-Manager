@@ -6,8 +6,8 @@ from configure_logger import configure_logger, close_logger
 
 script_name = os.path.basename(__file__)
 kernel_id = 1337
-logger = configure_logger(script_name, kernel_id)
-# logger = logging.getLogger(__name__)
+# logger = configure_logger(script_name, kernel_id)
+logger = logging.getLogger(__name__)
 
 def get_kernel_info():
 

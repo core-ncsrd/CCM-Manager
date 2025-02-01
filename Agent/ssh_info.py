@@ -5,8 +5,8 @@ from configure_logger import configure_logger, close_logger
 
 script_name = os.path.basename(__file__)
 ssh_id = 4253
-logger = configure_logger(script_name, ssh_id)
-# logger = logging.getLogger(__name__)
+# logger = configure_logger(script_name, ssh_id)
+logger = logging.getLogger(__name__)
 
 def get_ssh_crypto_info():
     logger.info("Gathering SSH crypto information....")

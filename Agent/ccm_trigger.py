@@ -1,6 +1,5 @@
 # example call
 # curl -X POST http://127.0.0.1:6868 -H "Content-Type: application/json" -d '{"trigger": "start"}'
-import socket
 import subprocess
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
@@ -19,8 +18,7 @@ logger.setLevel(logging.INFO)
 max_bytes = 10 * 1024 # 5KB to test the rotation
 backup_count = 30 # up to 30 old log files
 #file_handler = logging.FileHandler('ccm-agent.log')
-hostname = socket.gethostname()
-file_handler = RotatingFileHandler(f'ccm-agent-{hostname}-listener.log', 'a', max_bytes, backup_count)
+file_handler = RotatingFileHandler('ccm-agent-listener.log', max_bytes, backup_count)
 file_handler.setLevel(logging.INFO)
 
 # Create formatter of the log file
@@ -92,7 +90,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             logger.warning(f"Unknown request: {self.path}")
 
 
-def run_server(host='0.0.0.0', port=6868):
+def run_server(host='10.160.101.211', port=6868):
     server_address = (host, port)
     httpd = HTTPServer(server_address, RequestHandler)
     logger.info(f"Server running at http://{host}:{port}/")

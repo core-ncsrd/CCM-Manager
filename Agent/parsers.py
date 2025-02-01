@@ -4,8 +4,8 @@ from configure_logger import configure_logger, close_logger
 
 script_name = os.path.basename(__file__)
 parser_id = 4180
-logger = configure_logger(script_name, parser_id)
-# logger = logging.getLogger(__name__)
+# logger = configure_logger(script_name, parser_id)
+logger = logging.getLogger(__name__)
 
 def parse_ciphers_file(filepath):
     logger.info("Parsing ciphers' file....")

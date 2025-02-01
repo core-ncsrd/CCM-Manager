@@ -7,8 +7,8 @@ from configure_logger import configure_logger
 
 script_name = os.path.basename(__file__)
 cert_id = 5280
-# logger = logging.getLogger(__name__)
-logger = configure_logger(script_name, cert_id)
+logger = logging.getLogger(__name__)
+# logger = configure_logger(script_name, cert_id)
 
 # Helper function to get the certificate of the host being validated
 def find_certificate():

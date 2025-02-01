@@ -16,10 +16,15 @@ Text/JSON files and explanations:
 - cipher-and-cipher-values.txt is taken from http://oid-info.com/get/1.3.6.1.4.1.11.2.4.3.20.74
 - algorithms-security-levels.txt was an initial approach to gathering the security levels of several of the most known algorithms and their NIST security levels based on their keysize
 
+Files sent to the API
+---------------------
+- output-<date>.json -> containing information about the system's cryptographic assets
+- ccm-a-{hostname}-local.conf -> containing the system's UUID to be seperated from other Agents' outputs of other systems, date&time the agent first and last run on the system
+- ccm-a-{hostname}-local-conf.log -> logs from the ccm-trigger
+
 Further actions:
 ----------------
-- Check and review service and trigger
-- Enrich code with information about the host's cryptographic information from the kernel
-
+- Check and review service
+- Enrich code with information about the host's cryptographic information from the kernel (Can be easily implemented if need be, the code is ready but commented out)
 
 More information TBA
