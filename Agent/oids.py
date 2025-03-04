@@ -3,12 +3,14 @@ import re
 import os
 import json
 import logging
-from configure_logger import configure_logger, close_logger
+# from configure_logger import configure_logger, close_logger
+from logger_module import get_logger
 
-script_name = os.path.basename(__file__)
-oids_id = 6750
-# logger = configure_logger(script_name, oids_id)
-logger = logging.getLogger(__name__)
+# script_name = os.path.basename(__file__)
+# oids_id = 6750
+# # logger = configure_logger(script_name, oids_id)
+# logger = logging.getLogger(__name__)
+logger = get_logger("OIDs", custom_id=6750)
 
 # Helper function to execute the openssl list -objects command and save output to JSON
 def get_system_oids():

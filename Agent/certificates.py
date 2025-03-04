@@ -3,12 +3,14 @@ import re
 import os
 import fnmatch
 import logging
-from configure_logger import configure_logger
+from logger_module import get_logger
 
-script_name = os.path.basename(__file__)
-cert_id = 5280
-logger = logging.getLogger(__name__)
-# logger = configure_logger(script_name, cert_id)
+# script_name = os.path.basename(__file__)
+# cert_id = 5280
+# logger = logging.getLogger(__name__)
+# # logger = configure_logger(script_name, cert_id)
+
+logger = get_logger("Certificates script", custom_id=5280)
 
 # Helper function to get the certificate of the host being validated
 def find_certificate():

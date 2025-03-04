@@ -2,12 +2,14 @@ import subprocess
 import re
 import os
 import logging
-from configure_logger import configure_logger, close_logger
+# from configure_logger import configure_logger, close_logger
+from logger_module import get_logger
 
-script_name = os.path.basename(__file__)
-enabled_id = 8446
-# logger = configure_logger(script_name, enabled_id)
-logger = logging.getLogger(__name__)
+# script_name = os.path.basename(__file__)
+# enabled_id = 8446
+# # logger = configure_logger(script_name, enabled_id)
+# logger = logging.getLogger(__name__)
+logger = get_logger("Algorithms", custom_id=8446)
 
 #Helper function to get all algorithms within the system
 def get_all_algorithms():

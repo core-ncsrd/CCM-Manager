@@ -1,11 +1,13 @@
 import logging
 import os
-from configure_logger import configure_logger, close_logger
+# from configure_logger import configure_logger, close_logger
+from logger_module import get_logger
 
-script_name = os.path.basename(__file__)
-parser_id = 4180
-# logger = configure_logger(script_name, parser_id)
-logger = logging.getLogger(__name__)
+# script_name = os.path.basename(__file__)
+# parser_id = 4180
+# # logger = configure_logger(script_name, parser_id)
+# logger = logging.getLogger(__name__)
+logger = get_logger("Parsers", custom_id=4180)
 
 def parse_ciphers_file(filepath):
     logger.info("Parsing ciphers' file....")

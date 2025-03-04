@@ -2,12 +2,14 @@ import subprocess
 import re
 import logging
 import os
-from configure_logger import configure_logger, close_logger
+# from configure_logger import configure_logger, close_logger
+from logger_module import get_logger
 
-script_name = os.path.basename(__file__)
-kernel_id = 1337
-# logger = configure_logger(script_name, kernel_id)
-logger = logging.getLogger(__name__)
+# script_name = os.path.basename(__file__)
+# kernel_id = 1337
+# # logger = configure_logger(script_name, kernel_id)
+# logger = logging.getLogger(__name__)
+logger = get_logger("Kernel", custom_id=1337)
 
 def get_kernel_info():
 

@@ -16,38 +16,40 @@ from ssl_tls_cipher_info import get_tls_cipher_info, get_nmap_tls_info
 from set_ccma_conf_file import log_ccm_data
 #from kernels import get_kernel_info ## NOT YET
 import requests
-from configure_logger import configure_logger, close_logger
+# from configure_logger import configure_logger, close_logger
+from logger_module import get_logger
 import socket
 
-global custom_id
-custom_id = 22524368
+
+# global custom_id
+# custom_id = 22524368
 
 # Starting logger
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+# logger = logging.getLogger(__name__)
+# logger.setLevel(logging.INFO)
 
-# Create rotating file handler for the logger
-# max_bytes = 15 * 1024 * 1024  # 15 MB
-max_bytes = 50 * 1024 # 5KB to test the rotation
-backup_count = 30 # up to 30 old log files
-#file_handler = logging.FileHandler('ccm-agent.log')
-file_handler = RotatingFileHandler('ccm-agent.log', max_bytes, backup_count)
-file_handler.setLevel(logging.INFO)
+# # Create rotating file handler for the logger
+# max_bytes = 50 * 1024 # 50KB to test the rotation
+# backup_count = 30 # up to 30 old log files
+# file_handler = RotatingFileHandler('ccm-agent.log', max_bytes, backup_count)
+# file_handler.setLevel(logging.INFO)
 
-# Create formatter of the log file
-script_name = os.path.basename(__name__)
+# # Create formatter of the log file
+# script_name = os.path.basename(__name__)
 # main_process_id = 22524368
 
 # custom_id = main_process_id
 
-# logger = configure_logger(script_name, main_process_id)
+# # logger = configure_logger(script_name, main_process_id)
 
-# formatter = logging.Formatter(f'%(asctime)s - %(name)s - %(levelname)s - %{custom_id}s: %(message)s')
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
-file_handler.setFormatter(formatter)
+# # formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(custom_id)s: %(message)s')
+# #formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
+# file_handler.setFormatter(formatter)
 
-# Add the handler to the logger
-logger.addHandler(file_handler)
+# # Add the handler to the logger
+# logger.addHandler(file_handler)
+
+logger = get_logger("MAIN", custom_id=22524368)
 
 logger.info("#--------------------------------------------------#")
 logger.info("#----------- INITIATING LOCAL CCM AGENT -----------#")
@@ -172,24 +174,24 @@ def populate_json():
     with open(output_file, "w") as json_file:
         json.dump(data, json_file, indent=2)
 
-def send_json_to_api(file_path, api_url):
-    logger.info("Trying to send file %s to the CCM Manager..........", file_path)
-    if not os.path.exists(file_path):
-        logger.error("[%s]: Error: file %s does not exist.", file_path)
-        return None
+# def send_json_to_api(file_path, api_url):
+#     logger.info("Trying to send file %s to the CCM Manager..........", file_path)
+#     if not os.path.exists(file_path):
+#         logger.error("[%s]: Error: file %s does not exist.", file_path)
+#         return None
 
-    try:
-        with open(file_path, 'rb') as json_file:
-            files = {
-                'file': (os.path.basename(file_path), json_file, 'application/json'),
-            }
-            response = requests.post(api_url, files=files)
-            response.raise_for_status()  # Raise an HTTPError for bad responses (4xx, 5xx)
-            logger.info("File %s successfully sent to %s. Response: %s", file_path, api_url, response.text)
-            return response.json()
-    except requests.exceptions.RequestException as e:
-        logger.error("[%s]: Error sending file %s to CCM Manager API %s: %s", file_path, api_url, e)
-        return None
+#     try:
+#         with open(file_path, 'rb') as json_file:
+#             files = {
+#                 'file': (os.path.basename(file_path), json_file, 'application/json'),
+#             }
+#             response = requests.post(api_url, files=files)
+#             response.raise_for_status()  # Raise an HTTPError for bad responses (4xx, 5xx)
+#             logger.info("File %s successfully sent to %s. Response: %s", file_path, api_url, response.text)
+#             return response.json()
+#     except requests.exceptions.RequestException as e:
+#         logger.error("[%s]: Error sending file %s to CCM Manager API %s: %s", file_path, api_url, e)
+#         return None
 
 def send_files_to_api(main_file_path, api_url):
     hostname = socket.gethostname()
@@ -198,32 +200,11 @@ def send_files_to_api(main_file_path, api_url):
 
     # Check if all files exist
     files_to_send = {
-        "main_file": main_file_path,
-        "local_conf_file": local_conf_file,
-        "local_log_file": local_log_file,
+        "main_file": (main_file_path, "application/json"),
+        "local_conf_file": (local_conf_file, "application/json")
+        #"local_log_file": (local_log_file, "text/plain"),
     }
 
-    for key, file_path in files_to_send.items():
-        if not os.path.exists(file_path):
-            logger.error("Error: %s (%s) does not exist.", key, file_path)
-            return None
-
-    # # Open all files to send as multipart data
-    # try:
-    #     with open(main_file_path, 'rb') as main_file, \
-    #             open(local_conf_file, 'rb') as conf_file, \
-    #             open(local_log_file, 'rb') as lcl_log_file:
-
-    #         files = {
-    #             "json_file": (os.path.basename(main_file_path), main_file, "application/json"),
-    #             "local_conf": (os.path.basename(local_conf_file), conf_file, "application/json"),
-    #             "local_log_file": (os.path.basename(local_log_file), lcl_log_file.read(), "text/plain"),
-    #         }
-
-    #         response = requests.post(api_url, files=files)
-    #         response.raise_for_status()  # Raise an HTTPError for bad responses (4xx, 5xx)
-    #         logger.info("All files successfully sent to %s. Response: %s", api_url, response.text)
-    #         return response.json()
     for key, (file_path, mime_type) in files_to_send.items():
         if not os.path.exists(file_path):
             logger.error("Error: %s (%s) does not exist.", key, file_path)
@@ -239,8 +220,6 @@ def send_files_to_api(main_file_path, api_url):
 
                 logger.info("File %s successfully sent to %s. Response: %s", file_path, api_url, response.text)
 
-
-
         except requests.exceptions.RequestException as e:
             logger.error("Error sending files to CCM Manager API %s: %s", api_url, e)
             return None
@@ -252,9 +231,10 @@ def send_files_to_api(main_file_path, api_url):
 # Execute script
 if __name__ == "__main__":
     start_time = time.time()
+    
     log_ccm_data()
-
     populate_json()
+    
     logger.info("Data appended to %s.", output_file)
 
     logger.info("Sending %s to CCM Manager for further proscessing...", output_file)
@@ -268,7 +248,9 @@ if __name__ == "__main__":
     # else:
     #     logger.info(f"{output_file} sent to CCM Manager. API response:", response)
 
-    main_file_path = output_file  # Ensure the variable is used correctly
+    main_file_path = output_file
+    
+    print(main_file_path, "_________________________________")  # Ensure the variable is used correctly
     api_url = "http://10.160.101.202:5001/receive_output"
     response = send_files_to_api(main_file_path, api_url)  # Capture the response here
 
@@ -288,8 +270,8 @@ if __name__ == "__main__":
     logger.info("#--------------------------------------------------#")
     logger.info("#----------- TERMINATING LOCAL CCM AGENT ----------#")
     logger.info("#--------------------------------------------------#")
-    if not logger.handlers:
-        handler = logging.StreamHandler()
-        logger.addHandler(handler)
-        logger.handlers[0].flush()
-        logger.handlers[0].close()
+    # if not logger.handlers:
+    #     handler = logging.StreamHandler()
+    #     logger.addHandler(handler)
+    #     logger.handlers[0].flush()
+    #     logger.handlers[0].close()

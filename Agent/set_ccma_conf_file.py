@@ -28,7 +28,7 @@ logger.addHandler(file_handler)
 def get_or_create_ccma_id_file():
     logger.info("Running on %s", hostname)
     logger.info(f"Checking if this is the first time the CCM Agent runs on this system ({hostname})")
-    id_file_name = f"{hostname}_id.cnf"
+    id_file_name = f"{hostname}_id.json"
 
     # Check if the file already exists
     if os.path.exists(id_file_name):
@@ -92,7 +92,7 @@ def log_ccm_data():
 
     mac_address = get_mac_address()
 
-    filename = f"ccm-a-{hostname}-local.conf"
+    filename = f"ccm-a-{hostname}-local.json"
     data = {
         "hashed_ccma_id": hashed_ccma_id,
         "hashed_tID": hashed_tID,

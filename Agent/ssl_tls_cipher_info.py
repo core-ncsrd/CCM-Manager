@@ -3,17 +3,19 @@ import json
 import re
 import os
 import logging
-from configure_logger import configure_logger, close_logger
+# from configure_logger import configure_logger, close_logger
+from logger_module import get_logger
 
-script_name = os.path.basename(__file__)
-ssl_id = 6101
-# logger = configure_logger(script_name, ssl_id)
-logger = logging.getLogger(__name__)
+# script_name = os.path.basename(__file__)
+# ssl_id = 6101
+# # logger = configure_logger(script_name, ssl_id)
+# logger = logging.getLogger(__name__)
+logger = get_logger("SSL TLS", custom_id=6101)
 
 def get_tls_cipher_info():
     # Use openssl ciphers -v to gather information about the ciphers
     logger.info("Gathering OpenSSL Ciphers information")
-    command = ["openssl", "ciphers", "-v"]
+    command = ["openssl", "ciphers", "-v", "ALL:!AES256:!AES128"]
     try:
         output = subprocess.check_output(command, text=True)
     except subprocess.CalledProcessError as e:
@@ -62,12 +64,12 @@ def get_tls_cipher_info():
 
 def get_nmap_tls_info():
     # Run the nmap command to get TLS ciphers
-    logger.info("[%s]: Gathering system's TLS ciphers via NMAP", ssl_id)
+    logger.info("Gathering system's TLS ciphers via NMAP")
     command_nmap = ["nmap", "-sV", "--script", "ssl-enum-ciphers", "-p-", "localhost"]
     try:
         output_nmap = subprocess.check_output(command_nmap, text=True)
     except subprocess.CalledProcessError as e:
-        logger.error(f"[{ssl_id}]: Error executing nmap command: {e}")
+        logger.error(f"Error executing nmap command: {e}")
         return {}
 
     nmap_tls_ssl_info = {"nmap_tls_ssl_enum_ciphers_info": {}}
@@ -87,7 +89,7 @@ def get_nmap_tls_info():
             status = port_match.group(3)
 
             # Initialize port details
-            logger.info("[%s]: Gathering TLS information on port %s.....", ssl_id, curr_port)
+            logger.info("Gathering TLS information on port %s.....", curr_port)
             nmap_tls_ssl_info["nmap_tls_ssl_enum_ciphers_info"][curr_port] = {
                 "net_proto": net_proto,
                 "status": status,
@@ -119,8 +121,11 @@ def get_nmap_tls_info():
     return nmap_tls_ssl_info
 
 
-#if __name__ == "__main__":
+if __name__ == "__main__":
 #   # Get NMAP TLS/SSL cipher information
 #   nmap_tls_info = get_nmap_tls_info()
 #   print("Nmap TLS Cipher Info:")
 #   print(json.dumps(nmap_tls_info, indent=2))
+    tls_info = get_tls_cipher_info()
+    print("TLS Cipher Info:")
+    print(json.dumps(tls_info, indent=2))

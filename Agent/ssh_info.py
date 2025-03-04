@@ -1,12 +1,14 @@
 import subprocess
 import logging
 import os
-from configure_logger import configure_logger, close_logger
+# from configure_logger import configure_logger, close_logger
+from logger_module import get_logger
 
-script_name = os.path.basename(__file__)
-ssh_id = 4253
-# logger = configure_logger(script_name, ssh_id)
-logger = logging.getLogger(__name__)
+# script_name = os.path.basename(__file__)
+# ssh_id = 4253
+# # logger = configure_logger(script_name, ssh_id)
+# logger = logging.getLogger(__name__)
+logger = get_logger("SSH", custom_id=4253)
 
 def get_ssh_crypto_info():
     logger.info("Gathering SSH crypto information....")
@@ -15,7 +17,7 @@ def get_ssh_crypto_info():
         command = ["sshd", "-T"]
         output = subprocess.check_output(command, text=True)
     except subprocess.CalledProcessError as e:
-        logger.error(f"[{ssh_id}]: Error executing command: {e}")
+        logger.error(f"Error executing command: {e}")
         return {}
 
     # Initialize a dictionary to store the algorithms categorized by type
@@ -34,21 +36,21 @@ def get_ssh_crypto_info():
                 # Add the algorithms to the dictionary, using the key as the algorithm type
                 ssh_crypto_info[key] = algorithms
             except ValueError as ve:
-                logger.error(f"[{ssh_id}]: Skipping line due to format error: {line} - value error: {ve}")
+                logger.error(f"Skipping line due to format error: {line} - value error: {ve}")
         elif "ciphers" in line:
             try:
                 key,value = line.split(None, 1)
                 ciphers = value.split(',')
                 ssh_crypto_info[key] = ciphers
             except ValueError as ve:
-                logger.error(f"[{ssh_id}]: Skipping line due to format error: {line} - value error: {ve}")
+                logger.error(f"Skipping line due to format error: {line} - value error: {ve}")
         elif "macs" in line:
             try:
                 key, value = line.split(None, 1)
                 macs = value.split(',')
                 ssh_crypto_info[key] = macs
             except ValueError as ve:
-                logger.error(f"[{ssh_id}]: Skipping line due to format error: {line} - value error: {ve}")
+                logger.error(f"Skipping line due to format error: {line} - value error: {ve}")
 
 
     #print(json.dumps({"ssh_crypto_info": ssh_crypto_info}, indent=2))
