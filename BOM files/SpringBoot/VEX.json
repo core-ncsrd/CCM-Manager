@@ -1,0 +1,595 @@
+{
+  "bomFormat" : "CycloneDX",
+  "specVersion" : "1.5",
+  "serialNumber" : "urn:uuid:65b8c777-3c0a-4a2b-bfdb-8d37a13af5b7",
+  "version" : 1,
+  "metadata" : {
+    "timestamp" : "2025-02-25T09:29:14Z",
+    "tools" : [
+      {
+        "vendor" : "OWASP",
+        "name" : "Dependency-Track",
+        "version" : "4.12.1"
+      }
+    ],
+    "component" : {
+      "type" : "application",
+      "bom-ref" : "34dadc0c-982e-41cf-82a3-69a8be2c72d1",
+      "name" : "test8",
+      "version" : "1.0"
+    }
+  },
+  "components" : [
+    {
+      "type" : "library",
+      "bom-ref" : "8e277795-89e4-4f08-b020-8b9bc4030f55",
+      "name" : "jackson-databind",
+      "version" : "2.11.3",
+      "description" : "General data-binding functionality for Jackson: works on core streaming API.",
+      "purl" : "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.11.3"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "8ed10b5e-e8b0-4879-b7e8-e84b416d3c64",
+      "name" : "logback-classic",
+      "version" : "1.2.3",
+      "description" : "Logback is a logging framework for Java applications, intended as a successor to the popular log4j project.",
+      "purl" : "pkg:maven/ch.qos.logback/logback-classic@1.2.3"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "84cbeedd-4a1c-41d6-be5c-52038deec0d1",
+      "name" : "logback-core",
+      "version" : "1.2.3",
+      "description" : "Core module of Logback.",
+      "purl" : "pkg:maven/ch.qos.logback/logback-core@1.2.3"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "35b1ff77-5952-4554-89cc-5066a793b82d",
+      "name" : "slf4j-api",
+      "version" : "1.7.30",
+      "description" : "Simple Logging Facade for Java.",
+      "purl" : "pkg:maven/org.slf4j/slf4j-api@1.7.30"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "4aa99289-0b72-46cd-969b-94fde745e30e",
+      "name" : "spring-amqp",
+      "version" : "2.3.1",
+      "description" : "Spring AMQP project applies core Spring concepts to the development of AMQP-based messaging solutions.",
+      "purl" : "pkg:maven/org.springframework.amqp/spring-amqp@2.3.1"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "09daa061-1823-4ed2-87d9-0717e791c97a",
+      "name" : "spring-boot-starter",
+      "version" : "2.4.0",
+      "description" : "Core starter, including auto-configuration support, logging, and YAML.",
+      "purl" : "pkg:maven/org.springframework.boot/spring-boot-starter@2.4.0"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "df92aa6e-3e32-4ad8-8413-c3fee823c0f7",
+      "name" : "spring-boot-starter-amqp",
+      "version" : "2.4.0",
+      "description" : "Starter for using Spring AMQP and RabbitMQ.",
+      "purl" : "pkg:maven/org.springframework.boot/spring-boot-starter-amqp@2.4.0"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "8520db93-5269-431e-9ad6-57e68b5fef75",
+      "name" : "spring-boot-starter-logging",
+      "version" : "2.4.0",
+      "description" : "Starter for logging using Logback.",
+      "purl" : "pkg:maven/org.springframework.boot/spring-boot-starter-logging@2.4.0"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "dfa90564-4dfd-42f8-b53a-d7f43dee2425",
+      "name" : "spring-core",
+      "version" : "5.3.1",
+      "description" : "Core utilities and interfaces for the Spring Framework.",
+      "purl" : "pkg:maven/org.springframework/spring-core@5.3.1"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "6fe55f3e-4ffb-4488-9d0c-389a58812f5d",
+      "name" : "spring-rabbit",
+      "version" : "2.3.1",
+      "description" : "Spring Rabbit project applies core Spring concepts to the development of RabbitMQ-based messaging solutions.",
+      "purl" : "pkg:maven/org.springframework.amqp/spring-rabbit@2.3.1"
+    }
+  ],
+  "dependencies" : [
+    {
+      "ref" : "34dadc0c-982e-41cf-82a3-69a8be2c72d1",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "8e277795-89e4-4f08-b020-8b9bc4030f55",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "8ed10b5e-e8b0-4879-b7e8-e84b416d3c64",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "84cbeedd-4a1c-41d6-be5c-52038deec0d1",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "35b1ff77-5952-4554-89cc-5066a793b82d",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "4aa99289-0b72-46cd-969b-94fde745e30e",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "09daa061-1823-4ed2-87d9-0717e791c97a",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "df92aa6e-3e32-4ad8-8413-c3fee823c0f7",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "8520db93-5269-431e-9ad6-57e68b5fef75",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "dfa90564-4dfd-42f8-b53a-d7f43dee2425",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "6fe55f3e-4ffb-4488-9d0c-389a58812f5d",
+      "dependsOn" : [ ]
+    }
+  ],
+  "vulnerabilities" : [
+    {
+      "bom-ref" : "a089a229-c5a2-40d6-9c9c-f79288723a41",
+      "id" : "CVE-2021-22095",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 4.0,
+          "severity" : "medium",
+          "method" : "CVSSv2",
+          "vector" : "(AV:N/AC:L/Au:S/C:N/I:N/A:P)"
+        },
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 6.5,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes" : [
+        502
+      ],
+      "description" : "In Spring AMQP versions 2.2.0 - 2.2.19 and 2.3.0 - 2.3.11, the Spring AMQP Message object, in its toString() method, will create a new String object from the message body, regardless of its size. This can cause an OOM Error with a large message",
+      "published" : "2021-11-30T19:15:00Z",
+      "updated" : "2024-11-21T05:49:00Z",
+      "affects" : [
+        {
+          "ref" : "4aa99289-0b72-46cd-969b-94fde745e30e"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "2c7de260-c53c-4d41-894d-a72a59a5957c",
+      "id" : "CVE-2021-22097",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 6.8,
+          "severity" : "medium",
+          "method" : "CVSSv2",
+          "vector" : "(AV:N/AC:L/Au:S/C:N/I:N/A:C)"
+        },
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 6.5,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes" : [
+        502
+      ],
+      "description" : "In Spring AMQP versions 2.2.0 - 2.2.18 and 2.3.0 - 2.3.10, the Spring AMQP Message object, in its toString() method, will deserialize a body for a message with content type application/x-java-serialized-object. It is possible to construct a malicious java.util.Dictionary object that can cause 100% CPU usage in the application if the toString() method is called.",
+      "published" : "2021-10-28T16:15:00Z",
+      "updated" : "2024-11-21T05:49:00Z",
+      "affects" : [
+        {
+          "ref" : "4aa99289-0b72-46cd-969b-94fde745e30e"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "eceea311-a676-4e4d-b990-255df35d8efd",
+      "id" : "CVE-2023-34050",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 4.3,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N"
+        }
+      ],
+      "cwes" : [
+        502
+      ],
+      "description" : "In spring AMQP versions 1.0.0 to 2.4.16 and 3.0.0 to 3.0.9 , allowed list patterns for deserializable class names were added to Spring AMQP, allowing users to lock down deserialization of data in messages from untrusted sources; however by default, when no allowed list was provided, all classes could be deserialized. Specifically, an application is vulnerable if * the SimpleMessageConverter or SerializerMessageConverter is used * the user does not configure allowed list patterns * untrusted message originators gain permissions to write messages to the RabbitMQ broker to send malicious content",
+      "published" : "2023-10-19T08:15:00Z",
+      "updated" : "2024-11-21T08:06:00Z",
+      "affects" : [
+        {
+          "ref" : "4aa99289-0b72-46cd-969b-94fde745e30e"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "ddb678d0-2292-4470-82eb-5028e563c2cc",
+      "id" : "CVE-2023-6378",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes" : [
+        502
+      ],
+      "description" : "A serialization vulnerability in logback receiver component part of logback version 1.4.11 allows an attacker to mount a Denial-Of-Service attack by sending poisoned data.",
+      "published" : "2023-11-29T12:15:00Z",
+      "updated" : "2024-11-29T12:15:00Z",
+      "affects" : [
+        {
+          "ref" : "8ed10b5e-e8b0-4879-b7e8-e84b416d3c64"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "f8d01b62-49ea-4d60-b9c8-d255a481bcdf",
+      "id" : "CVE-2021-42550",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 8.5,
+          "severity" : "high",
+          "method" : "CVSSv2",
+          "vector" : "(AV:N/AC:M/Au:S/C:C/I:C/A:C)"
+        },
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 6.6,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "cwes" : [
+        502
+      ],
+      "description" : "In logback version 1.2.7 and prior versions, an attacker with the required privileges to edit configurations files could craft a malicious configuration allowing to execute arbitrary code loaded from LDAP servers.",
+      "published" : "2021-12-16T19:15:00Z",
+      "updated" : "2024-11-21T06:27:00Z",
+      "affects" : [
+        {
+          "ref" : "8ed10b5e-e8b0-4879-b7e8-e84b416d3c64"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "ddb678d0-2292-4470-82eb-5028e563c2cc",
+      "id" : "CVE-2023-6378",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes" : [
+        502
+      ],
+      "description" : "A serialization vulnerability in logback receiver component part of logback version 1.4.11 allows an attacker to mount a Denial-Of-Service attack by sending poisoned data.",
+      "published" : "2023-11-29T12:15:00Z",
+      "updated" : "2024-11-29T12:15:00Z",
+      "affects" : [
+        {
+          "ref" : "84cbeedd-4a1c-41d6-be5c-52038deec0d1"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "f5359fe2-0dbc-411a-a74f-08ebe5cf2c10",
+      "id" : "CVE-2024-12798",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "severity" : "unknown",
+          "method" : "other"
+        }
+      ],
+      "description" : "ACE vulnerability in JaninoEventEvaluator by QOS.CH logback-core upto including version 0.1 to 1.3.14 and 1.4.0 to 1.5.12 in Java applications allows attacker to execute arbitrary code by compromising an existing logback configuration file or by injecting an environment variable before program execution. Malicious logback configuration files can allow the attacker to execute arbitrary code using the JaninoEventEvaluator extension. A successful attack requires the user to have write access to a configuration file. Alternatively, the attacker could inject a malicious environment variable pointing to a malicious configuration file. In both cases, the attack requires existing privilege.",
+      "published" : "2024-12-19T16:15:00Z",
+      "updated" : "2025-01-03T14:15:00Z",
+      "affects" : [
+        {
+          "ref" : "84cbeedd-4a1c-41d6-be5c-52038deec0d1"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "c839d6d3-a5c0-433b-bba3-ad041efedc50",
+      "id" : "CVE-2024-12801",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "severity" : "unknown",
+          "method" : "other"
+        }
+      ],
+      "description" : "Server-Side Request Forgery (SSRF) in SaxEventRecorder by QOS.CH logback version 0.1 to 1.3.14 and 1.4.0 to 1.5.12  on the Java platform, allows an attacker to forge requests by compromising logback configuration files in XML. The attacks involves the modification of DOCTYPE declaration in  XML configuration files.",
+      "published" : "2024-12-19T17:15:00Z",
+      "updated" : "2025-01-03T14:15:00Z",
+      "affects" : [
+        {
+          "ref" : "84cbeedd-4a1c-41d6-be5c-52038deec0d1"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "f8d01b62-49ea-4d60-b9c8-d255a481bcdf",
+      "id" : "CVE-2021-42550",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 8.5,
+          "severity" : "high",
+          "method" : "CVSSv2",
+          "vector" : "(AV:N/AC:M/Au:S/C:C/I:C/A:C)"
+        },
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 6.6,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "cwes" : [
+        502
+      ],
+      "description" : "In logback version 1.2.7 and prior versions, an attacker with the required privileges to edit configurations files could craft a malicious configuration allowing to execute arbitrary code loaded from LDAP servers.",
+      "published" : "2021-12-16T19:15:00Z",
+      "updated" : "2024-11-21T06:27:00Z",
+      "affects" : [
+        {
+          "ref" : "84cbeedd-4a1c-41d6-be5c-52038deec0d1"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "e9e92069-2d5c-4546-8da0-281013235479",
+      "id" : "CVE-2020-36518",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 5.0,
+          "severity" : "medium",
+          "method" : "CVSSv2",
+          "vector" : "(AV:N/AC:L/Au:N/C:N/I:N/A:P)"
+        },
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes" : [
+        787
+      ],
+      "description" : "jackson-databind before 2.13.0 allows a Java StackOverflow exception and denial of service via a large depth of nested objects.",
+      "published" : "2022-03-11T07:15:00Z",
+      "updated" : "2024-11-21T05:29:00Z",
+      "affects" : [
+        {
+          "ref" : "8e277795-89e4-4f08-b020-8b9bc4030f55"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "87510ae7-b4a4-4a47-b689-d673c341c2f8",
+      "id" : "CVE-2022-42003",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes" : [
+        502
+      ],
+      "description" : "In FasterXML jackson-databind before versions 2.13.4.1 and 2.12.17.1, resource exhaustion can occur because of a lack of a check in primitive value deserializers to avoid deep wrapper array nesting, when the UNWRAP_SINGLE_VALUE_ARRAYS feature is enabled.",
+      "published" : "2022-10-02T05:15:00Z",
+      "updated" : "2024-11-21T07:24:00Z",
+      "affects" : [
+        {
+          "ref" : "8e277795-89e4-4f08-b020-8b9bc4030f55"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "81e2f4b3-54f2-4773-b0e6-4209fa80e248",
+      "id" : "CVE-2022-42004",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes" : [
+        502
+      ],
+      "description" : "In FasterXML jackson-databind before 2.13.4, resource exhaustion can occur because of a lack of a check in BeanDeserializer._deserializeFromArray to prevent use of deeply nested arrays. An application is vulnerable only with certain customized choices for deserialization.",
+      "published" : "2022-10-02T05:15:00Z",
+      "updated" : "2024-11-21T07:24:00Z",
+      "affects" : [
+        {
+          "ref" : "8e277795-89e4-4f08-b020-8b9bc4030f55"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "743abf12-0336-4552-a157-491a3969d2ef",
+      "id" : "CVE-2021-46877",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes" : [
+        770
+      ],
+      "description" : "jackson-databind 2.10.x through 2.12.x before 2.12.6 and 2.13.x before 2.13.1 allows attackers to cause a denial of service (2 GB transient heap usage per read) in uncommon situations involving JsonNode JDK serialization.",
+      "published" : "2023-03-18T22:15:00Z",
+      "updated" : "2024-11-21T06:34:00Z",
+      "affects" : [
+        {
+          "ref" : "8e277795-89e4-4f08-b020-8b9bc4030f55"
+        }
+      ]
+    }
+  ]
+}

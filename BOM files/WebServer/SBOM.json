@@ -1,0 +1,59 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "serialNumber": "urn:uuid:987e6543-b21d-43f5-a456-426614174003",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-02-25T11:00:00Z",
+    "component": {
+      "type": "operating-system",
+      "name": "Ubuntu",
+      "version": "20.04",
+      "description": "Linux-based VM running MailHog mail server."
+    }
+  },
+  "components": [
+    {
+      "type": "application",
+      "name": "MailHog",
+      "version": "1.0.1",
+      "description": "MailHog SMTP testing server",
+      "purl": "pkg:github/mailhog/mailhog@1.0.1"
+    },
+    {
+      "type": "library",
+      "name": "Go",
+      "version": "1.16",
+      "description": "Programming language used for MailHog",
+      "purl": "pkg:golang/go@1.16"
+    },
+    {
+      "type": "library",
+      "name": "Postfix",
+      "version": "3.4.10",
+      "description": "Mail transfer agent (MTA) used for relaying emails",
+      "purl": "pkg:deb/postfix@3.4.10"
+    },
+    {
+      "type": "library",
+      "name": "Dovecot",
+      "version": "2.3.7.2",
+      "description": "IMAP and POP3 mail server",
+      "purl": "pkg:deb/dovecot@2.3.7.2"
+    },
+    {
+      "type": "library",
+      "name": "MySQL",
+      "version": "8.0",
+      "description": "Database system if used for mail storage",
+      "purl": "pkg:mysql/mysql@8.0"
+    },
+    {
+      "type": "library",
+      "name": "Nginx",
+      "version": "1.18.0",
+      "description": "Web server and reverse proxy if applicable",
+      "purl": "pkg:deb/nginx@1.18.0"
+    }
+  ]
+}

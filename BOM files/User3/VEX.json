@@ -1,0 +1,459 @@
+{
+  "bomFormat" : "CycloneDX",
+  "specVersion" : "1.5",
+  "serialNumber" : "urn:uuid:61208932-f784-48ee-b78a-24b36fb88aab",
+  "version" : 1,
+  "metadata" : {
+    "timestamp" : "2025-02-25T09:21:53Z",
+    "tools" : [
+      {
+        "vendor" : "OWASP",
+        "name" : "Dependency-Track",
+        "version" : "4.12.1"
+      }
+    ],
+    "component" : {
+      "type" : "application",
+      "bom-ref" : "83d14aff-3300-4388-9670-c933b44e62bd",
+      "name" : "test1",
+      "version" : "1.0"
+    }
+  },
+  "components" : [
+    {
+      "type" : "library",
+      "bom-ref" : "89e25d1d-b77b-4c07-90c5-903a8ec277c6",
+      "name" : "PyPDF2",
+      "version" : "3.0.1",
+      "description" : "requirements line 7: PyPDF2==3.0.1",
+      "purl" : "pkg:pypi/pypdf2@3.0.1",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/PyPDF2/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "4ad9f029-3c97-4677-ab1f-57d84c5cc9a5",
+      "name" : "certifi",
+      "version" : "2022.12.7",
+      "description" : "requirements line 1: certifi==2022.12.7",
+      "purl" : "pkg:pypi/certifi@2022.12.7",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/certifi/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "a2bf064d-a919-4a91-bac1-f1c2141be6e6",
+      "name" : "charset-normalizer",
+      "version" : "3.0.1",
+      "description" : "requirements line 2: charset-normalizer==3.0.1",
+      "purl" : "pkg:pypi/charset-normalizer@3.0.1",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/charset-normalizer/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "fa778fe4-1fd8-469e-b3ff-2550e54cff9e",
+      "name" : "click",
+      "version" : "8.1.3",
+      "description" : "requirements line 3: click==8.1.3",
+      "purl" : "pkg:pypi/click@8.1.3",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/click/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "ba6bdb6e-6190-4da1-ac35-c8daa37f7051",
+      "name" : "colorama",
+      "version" : "0.4.6",
+      "description" : "requirements line 4: colorama==0.4.6",
+      "purl" : "pkg:pypi/colorama@0.4.6",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/colorama/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "7b8040be-dd0f-4eb9-a5dc-6baccec26c9d",
+      "name" : "gTTS",
+      "version" : "2.3.1",
+      "description" : "requirements line 5: gTTS==2.3.1",
+      "purl" : "pkg:pypi/gtts@2.3.1",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/gTTS/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "ffc994fd-757f-49e4-aba1-9fa8ca4dfcdc",
+      "name" : "idna",
+      "version" : "3.4",
+      "description" : "requirements line 6: idna==3.4",
+      "purl" : "pkg:pypi/idna@3.4",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/idna/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "eb95e198-914c-4d26-ad11-8959a7ae39f0",
+      "name" : "requests",
+      "version" : "2.28.2",
+      "description" : "requirements line 8: requests==2.28.2",
+      "purl" : "pkg:pypi/requests@2.28.2",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/requests/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "d1e7026b-d5d8-4719-84ba-fd29c76c70a6",
+      "name" : "urllib3",
+      "version" : "1.26.14",
+      "description" : "requirements line 9: urllib3==1.26.14",
+      "purl" : "pkg:pypi/urllib3@1.26.14",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/urllib3/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    }
+  ],
+  "dependencies" : [
+    {
+      "ref" : "83d14aff-3300-4388-9670-c933b44e62bd",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "89e25d1d-b77b-4c07-90c5-903a8ec277c6",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "4ad9f029-3c97-4677-ab1f-57d84c5cc9a5",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "a2bf064d-a919-4a91-bac1-f1c2141be6e6",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "fa778fe4-1fd8-469e-b3ff-2550e54cff9e",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "ba6bdb6e-6190-4da1-ac35-c8daa37f7051",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "7b8040be-dd0f-4eb9-a5dc-6baccec26c9d",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "ffc994fd-757f-49e4-aba1-9fa8ca4dfcdc",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "eb95e198-914c-4d26-ad11-8959a7ae39f0",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "d1e7026b-d5d8-4719-84ba-fd29c76c70a6",
+      "dependsOn" : [ ]
+    }
+  ],
+  "vulnerabilities" : [
+    {
+      "bom-ref" : "bed28709-2d98-486c-8310-5f1f7481344c",
+      "id" : "CVE-2023-36464",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 5.5,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "description" : "pypdf is an open source, pure-python PDF library. In affected versions an attacker may craft a PDF which leads to an infinite loop if `__parse_content_stream` is executed. That is, for example, the case if the user extracted text from such a PDF. This issue was introduced in pull request #969 and resolved in pull request #1828. Users are advised to upgrade. Users unable to upgrade may modify the line `while peek not in (b\"\\r\", b\"\\n\")` in `pypdf/generic/_data_structures.py` to `while peek not in (b\"\\r\", b\"\\n\", b\"\")`.",
+      "published" : "2023-06-27T22:15:00Z",
+      "updated" : "2024-11-21T08:09:00Z",
+      "affects" : [
+        {
+          "ref" : "89e25d1d-b77b-4c07-90c5-903a8ec277c6"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "c8551605-afa0-4a11-9562-ff8c2177c956",
+      "id" : "CVE-2023-46250",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 5.5,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "description" : "pypdf is a free and open-source pure-python PDF library. An attacker who uses a vulnerability present in versions 3.7.0 through 3.16.4 can craft a PDF which leads to an infinite loop. This infinite loop blocks the current process and can utilize a single core of the CPU by 100%. It does not affect memory usage. That is, for example, the case when the pypdf-user manipulates an incoming malicious PDF e.g. by merging it with another PDF or by adding annotations. The issue was fixed in version 3.17.0. As a workaround, apply the patch manually by modifying `pypdf/generic/_data_structures.py`.",
+      "published" : "2023-10-31T16:15:00Z",
+      "updated" : "2024-11-21T08:28:00Z",
+      "affects" : [
+        {
+          "ref" : "89e25d1d-b77b-4c07-90c5-903a8ec277c6"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "dd48aea9-abf8-4066-a302-f9fdafde5f94",
+      "id" : "CVE-2023-37920",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 9.8,
+          "severity" : "critical",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "cwes" : [
+        345
+      ],
+      "description" : "Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi prior to version 2023.07.22 recognizes \"e-Tugra\" root certificates. e-Tugra's root certificates were subject to an investigation prompted by reporting of security issues in their systems. Certifi 2023.07.22 removes root certificates from \"e-Tugra\" from the root store.",
+      "published" : "2023-07-25T21:15:00Z",
+      "updated" : "2025-02-13T13:50:00Z",
+      "affects" : [
+        {
+          "ref" : "4ad9f029-3c97-4677-ab1f-57d84c5cc9a5"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "5da6c82a-aef0-4553-bdae-f44e8baec6e7",
+      "id" : "CVE-2024-39689",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+        }
+      ],
+      "cwes" : [
+        345
+      ],
+      "description" : "Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi starting in 2021.5.30 and prior to 2024.7.4 recognized root certificates from `GLOBALTRUST`. Certifi 2024.7.04 removes root certificates from `GLOBALTRUST` from the root store. These are in the process of being removed from Mozilla's trust store. `GLOBALTRUST`'s root certificates are being removed pursuant to an investigation which identified \"long-running and unresolved compliance issues.\"",
+      "published" : "2024-07-05T19:15:00Z",
+      "updated" : "2025-02-15T00:15:00Z",
+      "affects" : [
+        {
+          "ref" : "4ad9f029-3c97-4677-ab1f-57d84c5cc9a5"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "cba0c835-5170-43dc-9079-f971aa3098dd",
+      "id" : "CVE-2024-3651",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "description" : "A vulnerability was identified in the kjd/idna library, specifically within the `idna.encode()` function, affecting version 3.6. The issue arises from the function's handling of crafted input strings, which can lead to quadratic complexity and consequently, a denial of service condition. This vulnerability is triggered by a crafted input that causes the `idna.encode()` function to process the input with considerable computational load, significantly increasing the processing time in a quadratic manner relative to the input size.",
+      "published" : "2024-07-07T18:15:00Z",
+      "updated" : "2024-11-21T09:30:00Z",
+      "affects" : [
+        {
+          "ref" : "ffc994fd-757f-49e4-aba1-9fa8ca4dfcdc"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "22105a0a-361d-486b-af48-49d80fcde3c7",
+      "id" : "CVE-2023-32681",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 6.1,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:N/A:N"
+        }
+      ],
+      "description" : "Requests is a HTTP library. Since Requests 2.3.0, Requests has been leaking Proxy-Authorization headers to destination servers when redirected to an HTTPS endpoint. This is a product of how we use `rebuild_proxies` to reattach the `Proxy-Authorization` header to requests. For HTTP connections sent through the tunnel, the proxy will identify the header in the request itself and remove it prior to forwarding to the destination server. However when sent over HTTPS, the `Proxy-Authorization` header must be sent in the CONNECT request as the proxy has no visibility into the tunneled request. This results in Requests forwarding proxy credentials to the destination server unintentionally, allowing a malicious actor to potentially exfiltrate sensitive information. This issue has been patched in version 2.31.0.",
+      "published" : "2023-05-26T18:15:00Z",
+      "updated" : "2025-02-13T17:16:00Z",
+      "affects" : [
+        {
+          "ref" : "eb95e198-914c-4d26-ad11-8959a7ae39f0"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "fc0210ab-f1a3-44db-8cb4-69825bbcf39b",
+      "id" : "CVE-2024-35195",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "severity" : "unknown",
+          "method" : "other"
+        }
+      ],
+      "description" : "Requests is a HTTP library. Prior to 2.32.0, when making requests through a Requests `Session`, if the first request is made with `verify=False` to disable cert verification, all subsequent requests to the same host will continue to ignore cert verification regardless of changes to the value of `verify`. This behavior will continue for the lifecycle of the connection in the connection pool. This vulnerability is fixed in 2.32.0.",
+      "published" : "2024-05-20T21:15:00Z",
+      "updated" : "2024-11-21T09:19:00Z",
+      "affects" : [
+        {
+          "ref" : "eb95e198-914c-4d26-ad11-8959a7ae39f0"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "f4cf781b-de16-439c-a8d8-927d7c87aef4",
+      "id" : "CVE-2023-43804",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 8.1,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+        }
+      ],
+      "description" : "urllib3 is a user-friendly HTTP client library for Python. urllib3 doesn't treat the `Cookie` HTTP header special or provide any helpers for managing cookies over HTTP, that is the responsibility of the user. However, it is possible for a user to specify a `Cookie` header and unknowingly leak information via HTTP redirects to a different origin if that user doesn't disable redirects explicitly. This issue has been patched in urllib3 version 1.26.17 or 2.0.5.",
+      "published" : "2023-10-04T17:15:00Z",
+      "updated" : "2024-12-13T14:15:00Z",
+      "affects" : [
+        {
+          "ref" : "d1e7026b-d5d8-4719-84ba-fd29c76c70a6"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "a05f5f5c-8a51-4604-92e8-40884ec82ca6",
+      "id" : "CVE-2023-45803",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 4.2,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:A/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "description" : "urllib3 is a user-friendly HTTP client library for Python. urllib3 previously wouldn't remove the HTTP request body when an HTTP redirect response using status 301, 302, or 303 after the request had its method changed from one that could accept a request body (like `POST`) to `GET` as is required by HTTP RFCs. Although this behavior is not specified in the section for redirects, it can be inferred by piecing together information from different sections and we have observed the behavior in other major HTTP client implementations like curl and web browsers. Because the vulnerability requires a previously trusted service to become compromised in order to have an impact on confidentiality we believe the exploitability of this vulnerability is low. Additionally, many users aren't putting sensitive data in HTTP request bodies, if this is the case then this vulnerability isn't exploitable. Both of the following conditions must be true to be affected by this vulnerability: 1. Using urllib3 and submitting sensitive information in the HTTP request body (such as form data or JSON) and 2. The origin service is compromised and starts redirecting using 301, 302, or 303 to a malicious peer or the redirected-to service becomes compromised. This issue has been addressed in versions 1.26.18 and 2.0.7 and users are advised to update to resolve this issue. Users unable to update should disable redirects for services that aren't expecting to respond with redirects with `redirects=False` and disable automatic redirects with `redirects=False` and handle 301, 302, and 303 redirects manually by stripping the HTTP request body.",
+      "published" : "2023-10-17T20:15:00Z",
+      "updated" : "2025-02-13T18:15:00Z",
+      "affects" : [
+        {
+          "ref" : "d1e7026b-d5d8-4719-84ba-fd29c76c70a6"
+        }
+      ]
+    }
+  ]
+}

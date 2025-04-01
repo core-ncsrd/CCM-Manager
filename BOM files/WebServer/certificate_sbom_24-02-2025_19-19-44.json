@@ -1,0 +1,29 @@
+{
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.6",
+    "serialNumber": "urn:uuid:9b553688-c976-4d0a-9d22-4e3b59d174e2",
+    "version": 1,
+    "metadata": {
+        "timestamp": "2025-02-25T10:32:41Z",
+        "component": {
+            "type": "application",
+            "name": "my application",
+            "version": "1.0"
+        }
+    },
+    "components": [
+        {
+            "type": "certificate",
+            "name": "MailHog TLS Certificate",
+            "version": "1.0",
+            "description": "Self-signed TLS certificate for MailHog",
+            "licenses": [],
+            "externalReferences": [
+                {
+                    "type": "distribution",
+                    "url": "file:/home/localadmin/mailhog.crt"
+                }
+            ]
+        }
+    ]
+}

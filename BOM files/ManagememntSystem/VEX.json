@@ -1,0 +1,347 @@
+{
+  "bomFormat" : "CycloneDX",
+  "specVersion" : "1.5",
+  "serialNumber" : "urn:uuid:f2be7388-fb09-410d-916c-d5d096526e78",
+  "version" : 1,
+  "metadata" : {
+    "timestamp" : "2025-02-25T09:25:05Z",
+    "tools" : [
+      {
+        "vendor" : "OWASP",
+        "name" : "Dependency-Track",
+        "version" : "4.12.1"
+      }
+    ],
+    "authors" : [
+      {
+        "name" : "Eswar",
+        "email" : "eswar@example.com"
+      }
+    ],
+    "component" : {
+      "type" : "application",
+      "bom-ref" : "ec24ff1b-89f3-4872-9d11-d43c881ebec1",
+      "name" : "test9",
+      "version" : "1.0",
+      "purl" : "pkg:github/eswargithub/gymmanagementsystem"
+    }
+  },
+  "components" : [
+    {
+      "type" : "library",
+      "bom-ref" : "dc22aed4-60cb-4c1b-b90e-f133e24971dc",
+      "name" : "Flask",
+      "version" : "1.1.2",
+      "description" : "A micro web framework written in Python.",
+      "purl" : "pkg:pypi/flask@1.1.2"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "3f0140a9-9254-46cc-99af-be43d0ba1748",
+      "name" : "Flask-MySQL",
+      "version" : "1.5.1",
+      "description" : "Flask extension that provides MySQL support.",
+      "purl" : "pkg:pypi/flask-mysql@1.5.1"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "fbbcfb33-0929-42b4-9521-e7bbd4e0c937",
+      "name" : "ItsDangerous",
+      "version" : "1.1.0",
+      "description" : "Safely pass trusted data to untrusted environments.",
+      "purl" : "pkg:pypi/itsdangerous@1.1.0"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "1635a0c4-f807-4a98-8443-bfee49620053",
+      "name" : "Jinja2",
+      "version" : "2.11.3",
+      "description" : "A templating engine for Python.",
+      "purl" : "pkg:pypi/jinja2@2.11.3"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "331b789f-b991-44e1-a8a8-d7cdc1e5f1b8",
+      "name" : "MarkupSafe",
+      "version" : "1.1.1",
+      "description" : "Implements a XML/HTML/XHTML Markup safe string for Python.",
+      "purl" : "pkg:pypi/markupsafe@1.1.1"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "d46d4635-5186-4360-aa81-68ab848f418d",
+      "name" : "MySQL-python",
+      "version" : "1.2.5",
+      "description" : "Python interface to MySQL.",
+      "purl" : "pkg:pypi/mysql-python@1.2.5"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "1d4f7c2f-5ce4-45a2-a2f7-5c866a2b404b",
+      "name" : "Werkzeug",
+      "version" : "1.0.1",
+      "description" : "A comprehensive WSGI web application library.",
+      "purl" : "pkg:pypi/werkzeug@1.0.1"
+    }
+  ],
+  "dependencies" : [
+    {
+      "ref" : "ec24ff1b-89f3-4872-9d11-d43c881ebec1",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "dc22aed4-60cb-4c1b-b90e-f133e24971dc",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "3f0140a9-9254-46cc-99af-be43d0ba1748",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "fbbcfb33-0929-42b4-9521-e7bbd4e0c937",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "1635a0c4-f807-4a98-8443-bfee49620053",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "331b789f-b991-44e1-a8a8-d7cdc1e5f1b8",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "d46d4635-5186-4360-aa81-68ab848f418d",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "1d4f7c2f-5ce4-45a2-a2f7-5c866a2b404b",
+      "dependsOn" : [ ]
+    }
+  ],
+  "vulnerabilities" : [
+    {
+      "bom-ref" : "031bc569-1c8a-48a2-b009-032e092e5560",
+      "id" : "CVE-2023-30861",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "description" : "Flask is a lightweight WSGI web application framework. When all of the following conditions are met, a response containing data intended for one client may be cached and subsequently sent by the proxy to other clients. If the proxy also caches `Set-Cookie` headers, it may send one client's `session` cookie to other clients. The severity depends on the application's use of the session and the proxy's behavior regarding cookies. The risk depends on all these conditions being met. 1. The application must be hosted behind a caching proxy that does not strip cookies or ignore responses with cookies. 2. The application sets `session.permanent = True` 3. The application does not access or modify the session at any point during a request. 4. `SESSION_REFRESH_EACH_REQUEST` enabled (the default). 5. The application does not set a `Cache-Control` header to indicate that a page is private or should not be cached. This happens because vulnerable versions of Flask only set the `Vary: Cookie` header when the session is accessed or modified, not when it is refreshed (re-sent to update the expiration) without being accessed or modified. This issue has been fixed in versions 2.3.2 and 2.2.5.",
+      "published" : "2023-05-02T18:15:00Z",
+      "updated" : "2024-11-21T08:00:00Z",
+      "affects" : [
+        {
+          "ref" : "dc22aed4-60cb-4c1b-b90e-f133e24971dc"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "81065c52-681a-46c0-a5df-0d1cb3275d7a",
+      "id" : "CVE-2023-23934",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 3.5,
+          "severity" : "low",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:A/AC:L/PR:N/UI:R/S:U/C:N/I:L/A:N"
+        }
+      ],
+      "description" : "Werkzeug is a comprehensive WSGI web application library. Browsers may allow \"nameless\" cookies that look like `=value` instead of `key=value`. A vulnerable browser may allow a compromised application on an adjacent subdomain to exploit this to set a cookie like `=__Host-test=bad` for another subdomain. Werkzeug prior to 2.2.3 will parse the cookie `=__Host-test=bad` as __Host-test=bad`. If a Werkzeug application is running next to a vulnerable or malicious subdomain which sets such a cookie using a vulnerable browser, the Werkzeug application will see the bad cookie value but the valid cookie key. The issue is fixed in Werkzeug 2.2.3.",
+      "published" : "2023-02-14T20:15:00Z",
+      "updated" : "2024-11-21T07:47:00Z",
+      "affects" : [
+        {
+          "ref" : "1d4f7c2f-5ce4-45a2-a2f7-5c866a2b404b"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "f3f1249a-532d-4ddc-bf87-5c5b747997b7",
+      "id" : "CVE-2023-25577",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "description" : "Werkzeug is a comprehensive WSGI web application library. Prior to version 2.2.3, Werkzeug's multipart form data parser will parse an unlimited number of parts, including file parts. Parts can be a small amount of bytes, but each requires CPU time to parse and may use more memory as Python data. If a request can be made to an endpoint that accesses `request.data`, `request.form`, `request.files`, or `request.get_data(parse_form_data=False)`, it can cause unexpectedly high resource usage. This allows an attacker to cause a denial of service by sending crafted multipart data to an endpoint that will parse it. The amount of CPU time required can block worker processes from handling legitimate requests. The amount of RAM required can trigger an out of memory kill of the process. Unlimited file parts can use up memory and file handles. If many concurrent requests are sent continuously, this can exhaust or kill all available workers. Version 2.2.3 contains a patch for this issue.",
+      "published" : "2023-02-14T20:15:00Z",
+      "updated" : "2024-11-21T07:49:00Z",
+      "affects" : [
+        {
+          "ref" : "1d4f7c2f-5ce4-45a2-a2f7-5c866a2b404b"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "d72164b0-fcc0-47b7-96f7-ee5c7ba56124",
+      "id" : "CVE-2023-46136",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes" : [
+        787
+      ],
+      "description" : "Werkzeug is a comprehensive WSGI web application library. If an upload of a file that starts with CR or LF and then is followed by megabytes of data without these characters: all of these bytes are appended chunk by chunk into internal bytearray and lookup for boundary is performed on growing buffer. This allows an attacker to cause a denial of service by sending crafted multipart data to an endpoint that will parse it. The amount of CPU time required can block worker processes from handling legitimate requests. This vulnerability has been patched in version 3.0.1.",
+      "published" : "2023-10-25T18:17:00Z",
+      "updated" : "2024-11-21T08:27:00Z",
+      "affects" : [
+        {
+          "ref" : "1d4f7c2f-5ce4-45a2-a2f7-5c866a2b404b"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "241561f0-d482-4072-be1a-f73b5f32521e",
+      "id" : "CVE-2024-34069",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "severity" : "unknown",
+          "method" : "other"
+        }
+      ],
+      "description" : "Werkzeug is a comprehensive WSGI web application library. The debugger in affected versions of Werkzeug can allow an attacker to execute code on a developer's machine under some circumstances. This requires the attacker to get the developer to interact with a domain and subdomain they control, and enter the debugger PIN, but if they are successful it allows access to the debugger even if it is only running on localhost. This also requires the attacker to guess a URL in the developer's application that will trigger the debugger. This vulnerability is fixed in 3.0.3.",
+      "published" : "2024-05-06T15:15:00Z",
+      "updated" : "2025-02-21T18:15:00Z",
+      "affects" : [
+        {
+          "ref" : "1d4f7c2f-5ce4-45a2-a2f7-5c866a2b404b"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "4ad59ecb-1e1c-4793-b482-c58aaa2a91c8",
+      "id" : "CVE-2024-49766",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "severity" : "unknown",
+          "method" : "other"
+        }
+      ],
+      "description" : "Werkzeug is a Web Server Gateway Interface web application library. On Python < 3.11 on Windows, os.path.isabs() does not catch UNC paths like //server/share. Werkzeug's safe_join() relies on this check, and so can produce a path that is not safe, potentially allowing unintended access to data. Applications using Python >= 3.11, or not using Windows, are not vulnerable. Werkzeug version 3.0.6 contains a patch.",
+      "published" : "2024-10-25T20:15:00Z",
+      "updated" : "2025-01-31T15:15:00Z",
+      "affects" : [
+        {
+          "ref" : "1d4f7c2f-5ce4-45a2-a2f7-5c866a2b404b"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "6d9054d8-4afd-4389-8a06-4868d6dbba6a",
+      "id" : "CVE-2024-22195",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 6.1,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+        }
+      ],
+      "cwes" : [
+        79
+      ],
+      "description" : "Jinja is an extensible templating engine. Special placeholders in the template allow writing code similar to Python syntax. It is possible to inject arbitrary HTML attributes into the rendered HTML template, potentially leading to Cross-Site Scripting (XSS). The Jinja `xmlattr` filter can be abused to inject arbitrary HTML attribute keys and values, bypassing the auto escaping mechanism and potentially leading to XSS. It may also be possible to bypass attribute validation checks if they are blacklist-based.",
+      "published" : "2024-01-11T03:15:00Z",
+      "updated" : "2025-02-13T18:16:00Z",
+      "affects" : [
+        {
+          "ref" : "1635a0c4-f807-4a98-8443-bfee49620053"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "02bf177d-b0d9-4d8e-903c-d87564a16167",
+      "id" : "CVE-2024-56326",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "severity" : "unknown",
+          "method" : "other"
+        }
+      ],
+      "description" : "Jinja is an extensible templating engine. Prior to 3.1.5, An oversight in how the Jinja sandboxed environment detects calls to str.format allows an attacker that controls the content of a template to execute arbitrary Python code. To exploit the vulnerability, an attacker needs to control the content of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications which execute untrusted templates. Jinja's sandbox does catch calls to str.format and ensures they don't escape the sandbox. However, it's possible to store a reference to a malicious string's format method, then pass that to a filter that calls it. No such filters are built-in to Jinja, but could be present through custom filters in an application. After the fix, such indirect calls are also handled by the sandbox. This vulnerability is fixed in 3.1.5.",
+      "published" : "2024-12-23T16:15:00Z",
+      "updated" : "2024-12-27T18:15:00Z",
+      "affects" : [
+        {
+          "ref" : "1635a0c4-f807-4a98-8443-bfee49620053"
+        }
+      ]
+    }
+  ]
+}

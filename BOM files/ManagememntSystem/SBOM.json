@@ -1,0 +1,88 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "serialNumber": "urn:uuid:123e4567-e89b-12d3-a456-426614174002",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-02-25T10:51:08Z",
+    "tools": [
+      {
+        "vendor": "cyclonedx",
+        "name": "cyclonedx-python",
+        "version": "1.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "name": "GymManagementSystem",
+      "version": "latest",
+      "description": "A Python-Flask based web application for managing gym operations, utilizing a MySQL database.",
+      "licenses": [],
+      "purl": "pkg:github/EswarGitHub/GymManagementSystem"
+    },
+    "authors": [
+      {
+        "name": "Eswar",
+        "email": "eswar@example.com"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "Flask",
+      "version": "1.1.2",
+      "description": "A micro web framework written in Python.",
+      "licenses": [],
+      "purl": "pkg:pypi/Flask@1.1.2"
+    },
+    {
+      "type": "library",
+      "name": "Flask-MySQL",
+      "version": "1.5.1",
+      "description": "Flask extension that provides MySQL support.",
+      "licenses": [],
+      "purl": "pkg:pypi/Flask-MySQL@1.5.1"
+    },
+    {
+      "type": "library",
+      "name": "Werkzeug",
+      "version": "1.0.1",
+      "description": "A comprehensive WSGI web application library.",
+      "licenses": [],
+      "purl": "pkg:pypi/Werkzeug@1.0.1"
+    },
+    {
+      "type": "library",
+      "name": "Jinja2",
+      "version": "2.11.3",
+      "description": "A templating engine for Python.",
+      "licenses": [],
+      "purl": "pkg:pypi/Jinja2@2.11.3"
+    },
+    {
+      "type": "library",
+      "name": "MarkupSafe",
+      "version": "1.1.1",
+      "description": "Implements a XML/HTML/XHTML Markup safe string for Python.",
+      "licenses": [],
+      "purl": "pkg:pypi/MarkupSafe@1.1.1"
+    },
+    {
+      "type": "library",
+      "name": "ItsDangerous",
+      "version": "1.1.0",
+      "description": "Safely pass trusted data to untrusted environments.",
+      "licenses": [],
+      "purl": "pkg:pypi/ItsDangerous@1.1.0"
+    },
+    {
+      "type": "library",
+      "name": "MySQL-python",
+      "version": "1.2.5",
+      "description": "Python interface to MySQL.",
+      "licenses": [],
+      "purl": "pkg:pypi/MySQL-python@1.2.5"
+    }
+  ]
+}

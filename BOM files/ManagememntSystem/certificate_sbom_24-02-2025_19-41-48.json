@@ -1,0 +1,15 @@
+{
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.6",
+    "serialNumber": "urn:uuid:5373425e-e8e5-44bb-b7e2-eda3adda6097",
+    "version": 1,
+    "metadata": {
+        "timestamp": "2025-02-24T19:41:48Z",
+        "component": {
+            "type": "application",
+            "name": "my application",
+            "version": "1.0"
+        }
+    },
+    "components": []
+}

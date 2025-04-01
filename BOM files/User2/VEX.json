@@ -1,0 +1,631 @@
+{
+  "bomFormat" : "CycloneDX",
+  "specVersion" : "1.5",
+  "serialNumber" : "urn:uuid:dce5f002-f1f2-4809-bf9d-8813ae2efb79",
+  "version" : 1,
+  "metadata" : {
+    "timestamp" : "2025-02-25T09:19:18Z",
+    "tools" : [
+      {
+        "vendor" : "OWASP",
+        "name" : "Dependency-Track",
+        "version" : "4.12.1"
+      }
+    ],
+    "component" : {
+      "type" : "application",
+      "bom-ref" : "82e592b4-56b8-455a-b3f6-70a966996277",
+      "name" : "test",
+      "version" : "1.0"
+    }
+  },
+  "components" : [
+    {
+      "type" : "library",
+      "bom-ref" : "47a41a51-64e6-4c16-8fd9-3934ebb145a2",
+      "name" : "Pillow",
+      "version" : "9.4.0",
+      "description" : "requirements line 10: Pillow==9.4.0",
+      "purl" : "pkg:pypi/pillow@9.4.0",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/Pillow/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "2f4d0675-18a3-4205-b3b0-3dfb814ca54f",
+      "name" : "certifi",
+      "version" : "2022.12.7",
+      "description" : "requirements line 1: certifi==2022.12.7",
+      "purl" : "pkg:pypi/certifi@2022.12.7",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/certifi/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "09cfcf87-a619-4eb6-9638-9ecd4fa76055",
+      "name" : "charset-normalizer",
+      "version" : "3.0.1",
+      "description" : "requirements line 2: charset-normalizer==3.0.1",
+      "purl" : "pkg:pypi/charset-normalizer@3.0.1",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/charset-normalizer/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "a9fef477-0d97-4b5a-8e4d-40529c78c838",
+      "name" : "colorama",
+      "version" : "0.4.6",
+      "description" : "requirements line 3: colorama==0.4.6",
+      "purl" : "pkg:pypi/colorama@0.4.6",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/colorama/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "9a642a54-1e89-4a01-a48e-3780b8d7ab1c",
+      "name" : "decorator",
+      "version" : "4.4.2",
+      "description" : "requirements line 4: decorator==4.4.2",
+      "purl" : "pkg:pypi/decorator@4.4.2",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/decorator/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "547b6f87-49a8-4552-88da-0d1ff7507d4c",
+      "name" : "idna",
+      "version" : "3.4",
+      "description" : "requirements line 5: idna==3.4",
+      "purl" : "pkg:pypi/idna@3.4",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/idna/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "c06911a1-05be-41f5-af67-f9405b726bea",
+      "name" : "imageio",
+      "version" : "2.25.0",
+      "description" : "requirements line 6: imageio==2.25.0",
+      "purl" : "pkg:pypi/imageio@2.25.0",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/imageio/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "d6069bcc-0443-4f7d-a4ac-eceaeff92f5e",
+      "name" : "imageio-ffmpeg",
+      "version" : "0.4.8",
+      "description" : "requirements line 7: imageio-ffmpeg==0.4.8",
+      "purl" : "pkg:pypi/imageio-ffmpeg@0.4.8",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/imageio-ffmpeg/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "b0013349-0ec0-4d7e-868d-7cf860d0f05e",
+      "name" : "moviepy",
+      "version" : "1.0.3",
+      "description" : "requirements line 8: moviepy==1.0.3",
+      "purl" : "pkg:pypi/moviepy@1.0.3",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/moviepy/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "18282ac2-d895-4387-8ba7-2d068f0d1bbd",
+      "name" : "numpy",
+      "version" : "1.24.1",
+      "description" : "requirements line 9: numpy==1.24.1",
+      "purl" : "pkg:pypi/numpy@1.24.1",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/numpy/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "c254814a-a64b-4726-9c9f-50fb734023f9",
+      "name" : "proglog",
+      "version" : "0.1.10",
+      "description" : "requirements line 11: proglog==0.1.10",
+      "purl" : "pkg:pypi/proglog@0.1.10",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/proglog/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "f45d1cd6-2c59-42e6-899c-fbdb69b74d64",
+      "name" : "requests",
+      "version" : "2.28.2",
+      "description" : "requirements line 12: requests==2.28.2",
+      "purl" : "pkg:pypi/requests@2.28.2",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/requests/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "f37629f1-b3af-4a21-98c5-0059cf9cfdf3",
+      "name" : "tk",
+      "version" : "0.1.0",
+      "description" : "requirements line 13: tk==0.1.0",
+      "purl" : "pkg:pypi/tk@0.1.0",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/tk/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "f03b8152-604a-4b50-af8b-5d34b47f263c",
+      "name" : "tqdm",
+      "version" : "4.64.1",
+      "description" : "requirements line 14: tqdm==4.64.1",
+      "purl" : "pkg:pypi/tqdm@4.64.1",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/tqdm/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "2bf92814-a7e0-47b7-ae71-d8ceaa5880ae",
+      "name" : "urllib3",
+      "version" : "1.26.14",
+      "description" : "requirements line 15: urllib3==1.26.14",
+      "purl" : "pkg:pypi/urllib3@1.26.14",
+      "externalReferences" : [
+        {
+          "type" : "distribution",
+          "url" : "https://pypi.org/simple/urllib3/",
+          "comment" : "implicit dist url"
+        }
+      ]
+    }
+  ],
+  "dependencies" : [
+    {
+      "ref" : "82e592b4-56b8-455a-b3f6-70a966996277",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "47a41a51-64e6-4c16-8fd9-3934ebb145a2",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "2f4d0675-18a3-4205-b3b0-3dfb814ca54f",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "09cfcf87-a619-4eb6-9638-9ecd4fa76055",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "a9fef477-0d97-4b5a-8e4d-40529c78c838",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "9a642a54-1e89-4a01-a48e-3780b8d7ab1c",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "547b6f87-49a8-4552-88da-0d1ff7507d4c",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "c06911a1-05be-41f5-af67-f9405b726bea",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "d6069bcc-0443-4f7d-a4ac-eceaeff92f5e",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "b0013349-0ec0-4d7e-868d-7cf860d0f05e",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "18282ac2-d895-4387-8ba7-2d068f0d1bbd",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "c254814a-a64b-4726-9c9f-50fb734023f9",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "f45d1cd6-2c59-42e6-899c-fbdb69b74d64",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "f37629f1-b3af-4a21-98c5-0059cf9cfdf3",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "f03b8152-604a-4b50-af8b-5d34b47f263c",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "2bf92814-a7e0-47b7-ae71-d8ceaa5880ae",
+      "dependsOn" : [ ]
+    }
+  ],
+  "vulnerabilities" : [
+    {
+      "bom-ref" : "bcd6ed5f-338c-4a2e-8109-1c999bf77909",
+      "id" : "CVE-2023-44271",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "cwes" : [
+        770
+      ],
+      "description" : "An issue was discovered in Pillow before 10.0.0. It is a Denial of Service that uncontrollably allocates memory to process a given task, potentially causing a service to crash by having it run out of memory. This occurs for truetype in ImageFont when textlength in an ImageDraw instance operates on a long text argument.",
+      "published" : "2023-11-03T05:15:00Z",
+      "updated" : "2024-11-21T08:25:00Z",
+      "affects" : [
+        {
+          "ref" : "47a41a51-64e6-4c16-8fd9-3934ebb145a2"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "887673cd-4dc9-426e-ac73-e3c3bb20cab9",
+      "id" : "CVE-2023-50447",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 8.1,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "cwes" : [
+        94
+      ],
+      "description" : "Pillow through 10.1.0 allows PIL.ImageMath.eval Arbitrary Code Execution via the environment parameter, a different vulnerability than CVE-2022-22817 (which was about the expression parameter).",
+      "published" : "2024-01-19T20:15:00Z",
+      "updated" : "2024-11-21T08:37:00Z",
+      "affects" : [
+        {
+          "ref" : "47a41a51-64e6-4c16-8fd9-3934ebb145a2"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "9940c65a-2d42-433b-b2fc-8b23d3e44b6f",
+      "id" : "CVE-2024-28219",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "severity" : "unknown",
+          "method" : "other"
+        }
+      ],
+      "description" : "In _imagingcms.c in Pillow before 10.3.0, a buffer overflow exists because strcpy is used instead of strncpy.",
+      "published" : "2024-04-03T03:15:00Z",
+      "updated" : "2024-11-21T09:06:00Z",
+      "affects" : [
+        {
+          "ref" : "47a41a51-64e6-4c16-8fd9-3934ebb145a2"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "dd48aea9-abf8-4066-a302-f9fdafde5f94",
+      "id" : "CVE-2023-37920",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 9.8,
+          "severity" : "critical",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+        }
+      ],
+      "cwes" : [
+        345
+      ],
+      "description" : "Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi prior to version 2023.07.22 recognizes \"e-Tugra\" root certificates. e-Tugra's root certificates were subject to an investigation prompted by reporting of security issues in their systems. Certifi 2023.07.22 removes root certificates from \"e-Tugra\" from the root store.",
+      "published" : "2023-07-25T21:15:00Z",
+      "updated" : "2025-02-13T13:50:00Z",
+      "affects" : [
+        {
+          "ref" : "2f4d0675-18a3-4205-b3b0-3dfb814ca54f"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "5da6c82a-aef0-4553-bdae-f44e8baec6e7",
+      "id" : "CVE-2024-39689",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N"
+        }
+      ],
+      "cwes" : [
+        345
+      ],
+      "description" : "Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi starting in 2021.5.30 and prior to 2024.7.4 recognized root certificates from `GLOBALTRUST`. Certifi 2024.7.04 removes root certificates from `GLOBALTRUST` from the root store. These are in the process of being removed from Mozilla's trust store. `GLOBALTRUST`'s root certificates are being removed pursuant to an investigation which identified \"long-running and unresolved compliance issues.\"",
+      "published" : "2024-07-05T19:15:00Z",
+      "updated" : "2025-02-15T00:15:00Z",
+      "affects" : [
+        {
+          "ref" : "2f4d0675-18a3-4205-b3b0-3dfb814ca54f"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "cba0c835-5170-43dc-9079-f971aa3098dd",
+      "id" : "CVE-2024-3651",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 7.5,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+        }
+      ],
+      "description" : "A vulnerability was identified in the kjd/idna library, specifically within the `idna.encode()` function, affecting version 3.6. The issue arises from the function's handling of crafted input strings, which can lead to quadratic complexity and consequently, a denial of service condition. This vulnerability is triggered by a crafted input that causes the `idna.encode()` function to process the input with considerable computational load, significantly increasing the processing time in a quadratic manner relative to the input size.",
+      "published" : "2024-07-07T18:15:00Z",
+      "updated" : "2024-11-21T09:30:00Z",
+      "affects" : [
+        {
+          "ref" : "547b6f87-49a8-4552-88da-0d1ff7507d4c"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "22105a0a-361d-486b-af48-49d80fcde3c7",
+      "id" : "CVE-2023-32681",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 6.1,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:H/PR:N/UI:R/S:C/C:H/I:N/A:N"
+        }
+      ],
+      "description" : "Requests is a HTTP library. Since Requests 2.3.0, Requests has been leaking Proxy-Authorization headers to destination servers when redirected to an HTTPS endpoint. This is a product of how we use `rebuild_proxies` to reattach the `Proxy-Authorization` header to requests. For HTTP connections sent through the tunnel, the proxy will identify the header in the request itself and remove it prior to forwarding to the destination server. However when sent over HTTPS, the `Proxy-Authorization` header must be sent in the CONNECT request as the proxy has no visibility into the tunneled request. This results in Requests forwarding proxy credentials to the destination server unintentionally, allowing a malicious actor to potentially exfiltrate sensitive information. This issue has been patched in version 2.31.0.",
+      "published" : "2023-05-26T18:15:00Z",
+      "updated" : "2025-02-13T17:16:00Z",
+      "affects" : [
+        {
+          "ref" : "f45d1cd6-2c59-42e6-899c-fbdb69b74d64"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "fc0210ab-f1a3-44db-8cb4-69825bbcf39b",
+      "id" : "CVE-2024-35195",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "severity" : "unknown",
+          "method" : "other"
+        }
+      ],
+      "description" : "Requests is a HTTP library. Prior to 2.32.0, when making requests through a Requests `Session`, if the first request is made with `verify=False` to disable cert verification, all subsequent requests to the same host will continue to ignore cert verification regardless of changes to the value of `verify`. This behavior will continue for the lifecycle of the connection in the connection pool. This vulnerability is fixed in 2.32.0.",
+      "published" : "2024-05-20T21:15:00Z",
+      "updated" : "2024-11-21T09:19:00Z",
+      "affects" : [
+        {
+          "ref" : "f45d1cd6-2c59-42e6-899c-fbdb69b74d64"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "c0c11cda-82af-42ee-aff8-c59df8e069af",
+      "id" : "CVE-2024-34062",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "severity" : "unknown",
+          "method" : "other"
+        }
+      ],
+      "description" : "tqdm is an open source progress bar for Python and CLI. Any optional non-boolean CLI arguments (e.g. `--delim`, `--buf-size`, `--manpath`) are passed through python's `eval`, allowing arbitrary code execution. This issue is only locally exploitable and had been addressed in release version 4.66.3. All users are advised to upgrade. There are no known workarounds for this vulnerability.",
+      "published" : "2024-05-03T10:15:00Z",
+      "updated" : "2024-11-21T09:18:00Z",
+      "affects" : [
+        {
+          "ref" : "f03b8152-604a-4b50-af8b-5d34b47f263c"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "f4cf781b-de16-439c-a8d8-927d7c87aef4",
+      "id" : "CVE-2023-43804",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 8.1,
+          "severity" : "high",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N"
+        }
+      ],
+      "description" : "urllib3 is a user-friendly HTTP client library for Python. urllib3 doesn't treat the `Cookie` HTTP header special or provide any helpers for managing cookies over HTTP, that is the responsibility of the user. However, it is possible for a user to specify a `Cookie` header and unknowingly leak information via HTTP redirects to a different origin if that user doesn't disable redirects explicitly. This issue has been patched in urllib3 version 1.26.17 or 2.0.5.",
+      "published" : "2023-10-04T17:15:00Z",
+      "updated" : "2024-12-13T14:15:00Z",
+      "affects" : [
+        {
+          "ref" : "2bf92814-a7e0-47b7-ae71-d8ceaa5880ae"
+        }
+      ]
+    },
+    {
+      "bom-ref" : "a05f5f5c-8a51-4604-92e8-40884ec82ca6",
+      "id" : "CVE-2023-45803",
+      "source" : {
+        "name" : "NVD",
+        "url" : "https://nvd.nist.gov/"
+      },
+      "ratings" : [
+        {
+          "source" : {
+            "name" : "NVD",
+            "url" : "https://nvd.nist.gov/"
+          },
+          "score" : 4.2,
+          "severity" : "medium",
+          "method" : "CVSSv3",
+          "vector" : "CVSS:3.0/AV:A/AC:H/PR:H/UI:N/S:U/C:H/I:N/A:N"
+        }
+      ],
+      "description" : "urllib3 is a user-friendly HTTP client library for Python. urllib3 previously wouldn't remove the HTTP request body when an HTTP redirect response using status 301, 302, or 303 after the request had its method changed from one that could accept a request body (like `POST`) to `GET` as is required by HTTP RFCs. Although this behavior is not specified in the section for redirects, it can be inferred by piecing together information from different sections and we have observed the behavior in other major HTTP client implementations like curl and web browsers. Because the vulnerability requires a previously trusted service to become compromised in order to have an impact on confidentiality we believe the exploitability of this vulnerability is low. Additionally, many users aren't putting sensitive data in HTTP request bodies, if this is the case then this vulnerability isn't exploitable. Both of the following conditions must be true to be affected by this vulnerability: 1. Using urllib3 and submitting sensitive information in the HTTP request body (such as form data or JSON) and 2. The origin service is compromised and starts redirecting using 301, 302, or 303 to a malicious peer or the redirected-to service becomes compromised. This issue has been addressed in versions 1.26.18 and 2.0.7 and users are advised to update to resolve this issue. Users unable to update should disable redirects for services that aren't expecting to respond with redirects with `redirects=False` and disable automatic redirects with `redirects=False` and handle 301, 302, and 303 redirects manually by stripping the HTTP request body.",
+      "published" : "2023-10-17T20:15:00Z",
+      "updated" : "2025-02-13T18:15:00Z",
+      "affects" : [
+        {
+          "ref" : "2bf92814-a7e0-47b7-ae71-d8ceaa5880ae"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "bomFormat" : "CycloneDX",
+  "specVersion" : "1.5",
+  "serialNumber" : "urn:uuid:0f5b8a47-1a63-4a3c-a20e-0494a152f374",
+  "version" : 1,
+  "metadata" : {
+    "timestamp" : "2025-02-25T09:24:31Z",
+    "tools" : [
+      {
+        "vendor" : "OWASP",
+        "name" : "Dependency-Track",
+        "version" : "4.12.1"
+      }
+    ],
+    "component" : {
+      "type" : "operating-system",
+      "bom-ref" : "2f6b7e1b-cab7-4fbd-b8c4-f0161a5e621f",
+      "name" : "test0",
+      "version" : "1.0"
+    }
+  },
+  "components" : [
+    {
+      "type" : "library",
+      "bom-ref" : "96da2188-7450-4102-b259-2e3204a072de",
+      "name" : "Dovecot",
+      "version" : "2.3.7.2",
+      "description" : "IMAP and POP3 mail server",
+      "purl" : "pkg:deb/dovecot@2.3.7.2"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "4dd2a0df-aad6-4303-a1dc-9ac74791ebb0",
+      "name" : "Go",
+      "version" : "1.16",
+      "description" : "Programming language used for MailHog",
+      "purl" : "pkg:golang/go@1.16"
+    },
+    {
+      "type" : "application",
+      "bom-ref" : "af85f9ee-3565-4f81-897a-57272e803840",
+      "name" : "MailHog",
+      "version" : "1.0.1",
+      "description" : "MailHog SMTP testing server",
+      "purl" : "pkg:github/mailhog/mailhog@1.0.1"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "c6ed828c-00cc-417d-b979-b2a195b4b254",
+      "name" : "MySQL",
+      "version" : "8.0",
+      "description" : "Database system if used for mail storage",
+      "purl" : "pkg:mysql/mysql@8.0"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "b35a66d0-dd94-4b72-ba89-aed5bcc274d3",
+      "name" : "Nginx",
+      "version" : "1.18.0",
+      "description" : "Web server and reverse proxy if applicable",
+      "purl" : "pkg:deb/nginx@1.18.0"
+    },
+    {
+      "type" : "library",
+      "bom-ref" : "5f3acaf2-241c-456d-81e0-0a0d1a504784",
+      "name" : "Postfix",
+      "version" : "3.4.10",
+      "description" : "Mail transfer agent (MTA) used for relaying emails",
+      "purl" : "pkg:deb/postfix@3.4.10"
+    }
+  ],
+  "dependencies" : [
+    {
+      "ref" : "2f6b7e1b-cab7-4fbd-b8c4-f0161a5e621f",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "96da2188-7450-4102-b259-2e3204a072de",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "4dd2a0df-aad6-4303-a1dc-9ac74791ebb0",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "af85f9ee-3565-4f81-897a-57272e803840",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "c6ed828c-00cc-417d-b979-b2a195b4b254",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "b35a66d0-dd94-4b72-ba89-aed5bcc274d3",
+      "dependsOn" : [ ]
+    },
+    {
+      "ref" : "5f3acaf2-241c-456d-81e0-0a0d1a504784",
+      "dependsOn" : [ ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "serialNumber": "urn:uuid:123e4567-e89b-12d3-a456-426614174001",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2025-02-25T10:48:08Z",
+    "tools": [
+      {
+        "vendor": "cyclonedx",
+        "name": "cyclonedx-java",
+        "version": "1.0"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "library",
+      "name": "spring-boot-starter-amqp",
+      "version": "2.4.0",
+      "description": "Starter for using Spring AMQP and RabbitMQ.",
+      "licenses": [],
+      "purl": "pkg:maven/org.springframework.boot/spring-boot-starter-amqp@2.4.0"
+    },
+    {
+      "type": "library",
+      "name": "spring-boot-starter",
+      "version": "2.4.0",
+      "description": "Core starter, including auto-configuration support, logging, and YAML.",
+      "licenses": [],
+      "purl": "pkg:maven/org.springframework.boot/spring-boot-starter@2.4.0"
+    },
+    {
+      "type": "library",
+      "name": "spring-boot-starter-logging",
+      "version": "2.4.0",
+      "description": "Starter for logging using Logback.",
+      "licenses": [],
+      "purl": "pkg:maven/org.springframework.boot/spring-boot-starter-logging@2.4.0"
+    },
+    {
+      "type": "library",
+      "name": "spring-core",
+      "version": "5.3.1",
+      "description": "Core utilities and interfaces for the Spring Framework.",
+      "licenses": [],
+      "purl": "pkg:maven/org.springframework/spring-core@5.3.1"
+    },
+    {
+      "type": "library",
+      "name": "spring-amqp",
+      "version": "2.3.1",
+      "description": "Spring AMQP project applies core Spring concepts to the development of AMQP-based messaging solutions.",
+      "licenses": [],
+      "purl": "pkg:maven/org.springframework.amqp/spring-amqp@2.3.1"
+    },
+    {
+      "type": "library",
+      "name": "spring-rabbit",
+      "version": "2.3.1",
+      "description": "Spring Rabbit project applies core Spring concepts to the development of RabbitMQ-based messaging solutions.",
+      "licenses": [],
+      "purl": "pkg:maven/org.springframework.amqp/spring-rabbit@2.3.1"
+    },
+    {
+      "type": "library",
+      "name": "slf4j-api",
+      "version": "1.7.30",
+      "description": "Simple Logging Facade for Java.",
+      "licenses": [],
+      "purl": "pkg:maven/org.slf4j/slf4j-api@1.7.30"
+    },
+    {
+      "type": "library",
+      "name": "logback-classic",
+      "version": "1.2.3",
+      "description": "Logback is a logging framework for Java applications, intended as a successor to the popular log4j project.",
+      "licenses": [],
+      "purl": "pkg:maven/ch.qos.logback/logback-classic@1.2.3"
+    },
+    {
+      "type": "library",
+      "name": "logback-core",
+      "version": "1.2.3",
+      "description": "Core module of Logback.",
+      "licenses": [],
+      "purl": "pkg:maven/ch.qos.logback/logback-core@1.2.3"
+    },
+    {
+      "type": "library",
+      "name": "jackson-databind",
+      "version": "2.11.3",
+      "description": "General data-binding functionality for Jackson: works on core streaming API.",
+      "licenses": [],
+      "purl": "pkg:maven/com.fasterxml.jackson.core/jackson-databind@2.11.3"
+    }
+  ]
+}
