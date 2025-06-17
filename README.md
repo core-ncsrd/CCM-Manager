@@ -39,8 +39,8 @@ This Flask-based API provides endpoints to manage Component Compliance and Certi
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/yourusername/ccm-ledger-api.git
-   cd ccm-ledger-api
+   git clone https://github.com/core-ncsrd/CCM-Manager.git
+   cd CCM-Manager
 
 2. (Optional) Create and activate a virtual environment:
 	 ```bash
